@@ -1,0 +1,24 @@
+{
+  "staging": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-crystalchildrencente-staging-94204-authRole",
+      "UnauthRoleArn": "arn:aws:iam::734523877834:role/amplify-crystalchildrencente-staging-94204-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::734523877834:role/amplify-crystalchildrencente-staging-94204-authRole",
+      "Region": "eu-west-1",
+      "DeploymentBucketName": "amplify-crystalchildrencente-staging-94204-deployment",
+      "UnauthRoleName": "amplify-crystalchildrencente-staging-94204-unauthRole",
+      "StackName": "amplify-crystalchildrencente-staging-94204",
+      "StackId": "arn:aws:cloudformation:eu-west-1:734523877834:stack/amplify-crystalchildrencente-staging-94204/08f144b0-9582-11ed-bbfd-02684c966e69",
+      "AmplifyAppId": "d1837mei2p690k"
+    },
+    "categories": {
+      "auth": {
+        "CrystalChildrenCenter": {}
+      },
+      "storage": {
+        "s3crystalchildrencenterstorage8c49dedb": {},
+        "s3crystalchildrencenterstorage1095e3a0": {}
+      }
+    }
+  }
+}

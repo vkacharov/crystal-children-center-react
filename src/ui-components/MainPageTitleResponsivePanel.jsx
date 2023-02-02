@@ -1,0 +1,256 @@
+/***************************************************************************
+ * The contents of this file were generated with Amplify Studio.           *
+ * Please refrain from making any modifications to this file.              *
+ * Any changes to this file will be overwritten when running amplify pull. *
+ **************************************************************************/
+
+/* eslint-disable */
+import * as React from "react";
+import {
+  getOverrideProps,
+  getOverridesFromVariants,
+  mergeVariantsAndOverrides,
+} from "@aws-amplify/ui-react/internal";
+import {
+  Button,
+  Flex,
+  Image,
+  Text,
+  View,
+  useBreakpointValue,
+} from "@aws-amplify/ui-react";
+export default function MainPageTitleResponsivePanel(props) {
+  const { overrides: overridesProp, ...restProp } = props;
+  const variants = [
+    {
+      overrides: {
+        image: {},
+        Mission: {},
+        Name: {},
+        Lede: {},
+        "Body Area": {},
+        Button: {},
+        "Type Lock Up": {},
+        HeroLayout3: {},
+        MainPageTitleResponsivePanel: {},
+      },
+      variantValues: { breakpoint: "large" },
+    },
+    {
+      overrides: {
+        image: {},
+        Mission: { fontSize: "14px", width: "640px" },
+        Name: { fontSize: "37px" },
+        Lede: { fontSize: "16px", letterSpacing: "0.01px" },
+        "Body Area": {
+          gap: "14px",
+          width: "640px",
+          justifyContent: "center",
+          alignItems: "center",
+        },
+        Button: {},
+        "Type Lock Up": { gap: "21px" },
+        HeroLayout3: {
+          width: "750px",
+          height: "428.57px",
+          padding: "48px 72px 48px 72px",
+        },
+        MainPageTitleResponsivePanel: { width: "750px", height: "428.57px" },
+      },
+      variantValues: { breakpoint: "medium" },
+    },
+    {
+      overrides: {
+        image: {},
+        Mission: { display: "none" },
+        Name: { fontSize: "28px" },
+        Lede: { display: "none" },
+        "Body Area": {},
+        Button: {},
+        "Type Lock Up": {},
+        HeroLayout3: {
+          width: "450px",
+          height: "257.14px",
+          padding: "10px 10px 10px 10px",
+        },
+        MainPageTitleResponsivePanel: { width: "450px", height: "257.14px" },
+      },
+      variantValues: { breakpoint: "small" },
+    },
+  ];
+  const breakpointHook = useBreakpointValue({
+    base: "small",
+    small: "small",
+    medium: "medium",
+    large: "large",
+  });
+  const rest = { style: { transition: "all 0.25s" }, ...restProp };
+  const overrides = mergeVariantsAndOverrides(
+    getOverridesFromVariants(variants, {
+      breakpoint: breakpointHook,
+      ...props,
+    }),
+    overridesProp || {}
+  );
+  return (
+    <View
+      width="1260px"
+      height="720px"
+      display="block"
+      gap="unset"
+      alignItems="unset"
+      justifyContent="unset"
+      position="relative"
+      padding="0px 0px 0px 0px"
+      {...getOverrideProps(overrides, "MainPageTitleResponsivePanel")}
+      {...rest}
+    >
+      <Image
+        width="100%"
+        height="100%"
+        display="block"
+        gap="unset"
+        alignItems="unset"
+        justifyContent="unset"
+        position="absolute"
+        top="0%"
+        bottom="0%"
+        left="0%"
+        right="0%"
+        padding="0px 0px 0px 0px"
+        objectFit="cover"
+        src="https://i0.wp.com/www.chrystalchildrenscenter.com/wp-content/uploads/2020/05/rehabilitation.jpg?w=635&ssl=1"
+        {...getOverrideProps(overrides, "image")}
+      ></Image>
+      <Flex
+        gap="10px"
+        direction="column"
+        width="1260px"
+        height="720px"
+        justifyContent="center"
+        alignItems="center"
+        overflow="hidden"
+        position="absolute"
+        top="0%"
+        bottom="0%"
+        left="0%"
+        right="0%"
+        padding="160px 240px 160px 240px"
+        backgroundColor="rgba(0,0,0,0.5)"
+        display="flex"
+        {...getOverrideProps(overrides, "HeroLayout3")}
+      >
+        <Flex
+          gap="24px"
+          direction="column"
+          width="unset"
+          height="unset"
+          justifyContent="center"
+          alignItems="center"
+          grow="1"
+          shrink="1"
+          basis="0"
+          alignSelf="stretch"
+          position="relative"
+          padding="0px 0px 0px 0px"
+          display="flex"
+          {...getOverrideProps(overrides, "Type Lock Up")}
+        >
+          <Text
+            fontFamily="Inter"
+            fontSize="16px"
+            fontWeight="700"
+            color="rgba(255,255,255,1)"
+            fontStyle="italic"
+            lineHeight="24px"
+            textAlign="center"
+            display="block"
+            direction="column"
+            justifyContent="unset"
+            width="unset"
+            height="unset"
+            gap="unset"
+            alignItems="unset"
+            shrink="0"
+            alignSelf="stretch"
+            position="relative"
+            padding="0px 0px 0px 0px"
+            whiteSpace="pre-wrap"
+            children="Every Child Deserves A Loving Family"
+            {...getOverrideProps(overrides, "Mission")}
+          ></Text>
+          <Flex
+            gap="16px"
+            direction="column"
+            width="unset"
+            height="unset"
+            justifyContent="flex-start"
+            alignItems="flex-start"
+            shrink="0"
+            alignSelf="stretch"
+            position="relative"
+            padding="0px 0px 0px 0px"
+            display="flex"
+            {...getOverrideProps(overrides, "Body Area")}
+          >
+            <Text
+              fontFamily="Inter"
+              fontSize="42px"
+              fontWeight="600"
+              color="rgba(255,255,255,1)"
+              lineHeight="30px"
+              textAlign="center"
+              display="block"
+              direction="column"
+              justifyContent="unset"
+              width="unset"
+              height="unset"
+              gap="unset"
+              alignItems="unset"
+              shrink="0"
+              alignSelf="stretch"
+              position="relative"
+              padding="0px 0px 0px 0px"
+              whiteSpace="pre-wrap"
+              children="Crystal Children’s Center"
+              {...getOverrideProps(overrides, "Name")}
+            ></Text>
+            <Text
+              fontFamily="Inter"
+              fontSize="18px"
+              fontWeight="400"
+              color="rgba(255,255,255,1)"
+              fontStyle="italic"
+              lineHeight="24px"
+              textAlign="center"
+              display="block"
+              direction="column"
+              justifyContent="unset"
+              letterSpacing="0.03px"
+              width="unset"
+              height="unset"
+              gap="unset"
+              alignItems="unset"
+              shrink="0"
+              alignSelf="stretch"
+              position="relative"
+              padding="0px 0px 0px 0px"
+              whiteSpace="pre-wrap"
+              children="They need an advocate, a supporter, and a protector. Someone they belong to."
+              {...getOverrideProps(overrides, "Lede")}
+            ></Text>
+          </Flex>
+          <Button
+            display="none"
+            shrink="0"
+            size="large"
+            isDisabled={false}
+            variation="primary"
+            children="Meet Our Children"
+            {...getOverrideProps(overrides, "Button")}
+          ></Button>
+        </Flex>
+      </Flex>
+    </View>
+  );
+}

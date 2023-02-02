@@ -1,0 +1,411 @@
+/***************************************************************************
+ * The contents of this file were generated with Amplify Studio.           *
+ * Please refrain from making any modifications to this file.              *
+ * Any changes to this file will be overwritten when running amplify pull. *
+ **************************************************************************/
+
+/* eslint-disable */
+import * as React from "react";
+import {
+  getOverrideProps,
+  getOverridesFromVariants,
+  mergeVariantsAndOverrides,
+  useNavigateAction,
+} from "@aws-amplify/ui-react/internal";
+import { Flex, Text, View, useBreakpointValue } from "@aws-amplify/ui-react";
+import MyIcon from "./MyIcon";
+export default function MemberSummaryPost(props) {
+  const {
+    member,
+    onPictureIconClick,
+    nullString,
+    imageSlot,
+    overrides: overridesProp,
+    ...restProp
+  } = props;
+  const variants = [
+    {
+      overrides: {
+        Name: {},
+        EditIcon: {},
+        EditIconFrame: {},
+        DeleteIcon: {},
+        DeleteIconFrame: {},
+        "Frame 419": {},
+        Frame36792698: {},
+        Sponsor: {},
+        Frame36692723: {},
+        Headline: {},
+        Summary: {},
+        Article: {},
+        MyIcon: {},
+        ReadMore: {},
+        "Read more": {},
+        Text: {},
+        ImageSlot: {},
+        Body: {},
+        MemberSummaryPost: {},
+      },
+      variantValues: { breakpoint: "large" },
+    },
+    {
+      overrides: {
+        Name: {},
+        EditIcon: {},
+        EditIconFrame: {},
+        DeleteIcon: {},
+        DeleteIconFrame: {},
+        "Frame 419": { display: "none" },
+        Frame36792698: {},
+        Sponsor: {},
+        Frame36692723: {},
+        Headline: {},
+        Summary: {},
+        Article: {},
+        MyIcon: {},
+        ReadMore: {},
+        "Read more": {},
+        Text: {},
+        ImageSlot: { width: "160px" },
+        Body: {},
+        MemberSummaryPost: { width: "480px" },
+      },
+      variantValues: { breakpoint: "medium" },
+    },
+  ];
+  const breakpointHook = useBreakpointValue({
+    base: "medium",
+    medium: "medium",
+    large: "large",
+  });
+  const rest = { style: { transition: "all 0.25s" }, ...restProp };
+  const overrides = mergeVariantsAndOverrides(
+    getOverridesFromVariants(variants, {
+      breakpoint: breakpointHook,
+      ...props,
+    }),
+    overridesProp || {}
+  );
+  const readmoreOnClick = useNavigateAction({
+    type: "url",
+    url: `${"/member/"}${member?.id}`,
+  });
+  return (
+    <Flex
+      gap="16px"
+      direction="column"
+      width="615px"
+      height="unset"
+      justifyContent="flex-start"
+      alignItems="flex-start"
+      position="relative"
+      padding="24px 24px 24px 24px"
+      backgroundColor="rgba(255,255,255,1)"
+      display="flex"
+      {...getOverrideProps(overrides, "MemberSummaryPost")}
+      {...rest}
+    >
+      <Flex
+        gap="40px"
+        direction="row"
+        width="unset"
+        height="unset"
+        justifyContent="flex-start"
+        alignItems="flex-start"
+        shrink="0"
+        alignSelf="stretch"
+        position="relative"
+        padding="0px 0px 0px 0px"
+        display="flex"
+        {...getOverrideProps(overrides, "Body")}
+      >
+        <Flex
+          gap="16px"
+          direction="column"
+          width="unset"
+          height="unset"
+          justifyContent="flex-start"
+          alignItems="flex-start"
+          grow="1"
+          shrink="1"
+          basis="0"
+          position="relative"
+          padding="0px 0px 0px 0px"
+          display="flex"
+          {...getOverrideProps(overrides, "Text")}
+        >
+          <Flex
+            gap="16px"
+            direction="column"
+            width="unset"
+            height="unset"
+            justifyContent="flex-start"
+            alignItems="flex-start"
+            shrink="0"
+            alignSelf="stretch"
+            position="relative"
+            padding="0px 0px 0px 0px"
+            display="flex"
+            {...getOverrideProps(overrides, "Headline")}
+          >
+            <Flex
+              gap="0"
+              direction="row"
+              width="unset"
+              height="unset"
+              justifyContent="flex-start"
+              alignItems="flex-start"
+              shrink="0"
+              alignSelf="stretch"
+              position="relative"
+              padding="0px 0px 0px 0px"
+              display="flex"
+              {...getOverrideProps(overrides, "Frame36792698")}
+            >
+              <Text
+                fontFamily="Inter"
+                fontSize="20px"
+                fontWeight="700"
+                color="rgba(13,26,38,1)"
+                lineHeight="25px"
+                textAlign="left"
+                display="block"
+                direction="column"
+                justifyContent="unset"
+                width="unset"
+                height="unset"
+                gap="unset"
+                alignItems="unset"
+                grow="1"
+                shrink="1"
+                basis="0"
+                position="relative"
+                padding="0px 0px 0px 0px"
+                whiteSpace="pre-wrap"
+                children={member?.name}
+                {...getOverrideProps(overrides, "Name")}
+              ></Text>
+              <Flex
+                gap="0"
+                direction="row"
+                width="unset"
+                height="unset"
+                justifyContent="flex-start"
+                alignItems="flex-start"
+                shrink="0"
+                position="relative"
+                padding="0px 0px 0px 0px"
+                display="flex"
+                {...getOverrideProps(overrides, "Frame 419")}
+              >
+                <View
+                  width="24px"
+                  height="24px"
+                  display="block"
+                  gap="unset"
+                  alignItems="unset"
+                  justifyContent="unset"
+                  shrink="0"
+                  position="relative"
+                  padding="0px 0px 0px 0px"
+                  {...getOverrideProps(overrides, "EditIconFrame")}
+                >
+                  <MyIcon
+                    width="24px"
+                    height="24px"
+                    display="block"
+                    gap="unset"
+                    alignItems="unset"
+                    justifyContent="unset"
+                    overflow="hidden"
+                    position="absolute"
+                    top="0px"
+                    left="0px"
+                    padding="0px 0px 0px 0px"
+                    type="edit"
+                    {...getOverrideProps(overrides, "EditIcon")}
+                  ></MyIcon>
+                </View>
+                <View
+                  width="24px"
+                  height="24px"
+                  display="block"
+                  gap="unset"
+                  alignItems="unset"
+                  justifyContent="unset"
+                  shrink="0"
+                  position="relative"
+                  padding="0px 0px 0px 0px"
+                  {...getOverrideProps(overrides, "DeleteIconFrame")}
+                >
+                  <MyIcon
+                    width="24px"
+                    height="24px"
+                    display="block"
+                    gap="unset"
+                    alignItems="unset"
+                    justifyContent="unset"
+                    overflow="hidden"
+                    position="absolute"
+                    top="0px"
+                    left="0px"
+                    padding="0px 0px 0px 0px"
+                    type="delete"
+                    {...getOverrideProps(overrides, "DeleteIcon")}
+                  ></MyIcon>
+                </View>
+              </Flex>
+            </Flex>
+            <Flex
+              gap="16px"
+              direction="row"
+              width="unset"
+              height="unset"
+              justifyContent="flex-start"
+              alignItems="flex-start"
+              shrink="0"
+              alignSelf="stretch"
+              position="relative"
+              padding="0px 0px 0px 0px"
+              display="flex"
+              {...getOverrideProps(overrides, "Frame36692723")}
+            >
+              <Text
+                fontFamily="Inter"
+                fontSize="16px"
+                fontWeight="400"
+                color="rgba(0,0,0,1)"
+                lineHeight="25px"
+                textAlign="center"
+                display="block"
+                direction="column"
+                justifyContent="unset"
+                width="unset"
+                height="unset"
+                gap="unset"
+                alignItems="unset"
+                shrink="0"
+                position="relative"
+                padding="0px 0px 0px 0px"
+                whiteSpace="pre-wrap"
+                children={`${"Angel family: "}${member?.sponsor}`}
+                {...getOverrideProps(overrides, "Sponsor")}
+              ></Text>
+            </Flex>
+          </Flex>
+          <Flex
+            gap="16px"
+            direction="row"
+            width="unset"
+            height="unset"
+            justifyContent="flex-start"
+            alignItems="flex-start"
+            shrink="0"
+            alignSelf="stretch"
+            position="relative"
+            padding="0px 0px 0px 0px"
+            display="flex"
+            {...getOverrideProps(overrides, "Article")}
+          >
+            <Text
+              fontFamily="Inter"
+              fontSize="16px"
+              fontWeight="400"
+              color="rgba(0,0,0,1)"
+              lineHeight="24px"
+              textAlign="left"
+              display="block"
+              direction="column"
+              justifyContent="unset"
+              letterSpacing="0.01px"
+              width="unset"
+              height="unset"
+              gap="unset"
+              alignItems="unset"
+              grow="1"
+              shrink="1"
+              basis="0"
+              position="relative"
+              padding="0px 0px 0px 0px"
+              whiteSpace="pre-wrap"
+              children={member?.summary}
+              {...getOverrideProps(overrides, "Summary")}
+            ></Text>
+          </Flex>
+          <Flex
+            gap="16px"
+            direction="row"
+            width="184px"
+            height="unset"
+            justifyContent="flex-start"
+            alignItems="flex-start"
+            shrink="0"
+            position="relative"
+            padding="0px 0px 0px 0px"
+            display="flex"
+            onClick={() => {
+              readmoreOnClick();
+            }}
+            {...getOverrideProps(overrides, "Read more")}
+          >
+            <MyIcon
+              width="24px"
+              height="24px"
+              display="block"
+              gap="unset"
+              alignItems="unset"
+              justifyContent="unset"
+              overflow="hidden"
+              shrink="0"
+              position="relative"
+              padding="0px 0px 0px 0px"
+              type="arrow-right"
+              {...getOverrideProps(overrides, "MyIcon")}
+            ></MyIcon>
+            <Text
+              fontFamily="Inter"
+              fontSize="16px"
+              fontWeight="400"
+              color="rgba(13,26,38,1)"
+              lineHeight="24px"
+              textAlign="left"
+              display="block"
+              direction="column"
+              justifyContent="unset"
+              textDecoration="underline"
+              letterSpacing="0.01px"
+              width="unset"
+              height="unset"
+              gap="unset"
+              alignItems="unset"
+              grow="1"
+              shrink="1"
+              basis="0"
+              position="relative"
+              padding="0px 0px 0px 0px"
+              whiteSpace="pre-wrap"
+              children="Read more"
+              {...getOverrideProps(overrides, "ReadMore")}
+            ></Text>
+          </Flex>
+        </Flex>
+        <Flex
+          gap="10px"
+          direction="row"
+          width="175px"
+          height="unset"
+          justifyContent="flex-start"
+          alignItems="flex-start"
+          shrink="0"
+          alignSelf="stretch"
+          position="relative"
+          borderRadius="10px"
+          padding="0px 0px 0px 0px"
+          display="flex"
+          children={imageSlot}
+          {...getOverrideProps(overrides, "ImageSlot")}
+        ></Flex>
+      </Flex>
+    </Flex>
+  );
+}

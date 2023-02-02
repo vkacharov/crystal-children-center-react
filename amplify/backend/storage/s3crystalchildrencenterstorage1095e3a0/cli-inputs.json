@@ -1,0 +1,14 @@
+{
+  "resourceName": "s3crystalchildrencenterstorage1095e3a0",
+  "bucketName": "crystalchildrencenter-storage-1095e3a0",
+  "policyUUID": "2a9af0cc",
+  "storageAccess": "authAndGuest",
+  "guestAccess": [
+    "CREATE_AND_UPDATE",
+    "READ"
+  ],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ"
+  ]
+}

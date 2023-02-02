@@ -1,0 +1,20 @@
+type Update @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  date: AWSDate
+  summary: String
+  memberID: ID! @index(name: "byMember")
+  pictureUrl: String
+}
+
+type Member @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  name: String
+  age: Int
+  date: AWSDate
+  bio: String
+  summary: String
+  pictureUrl: String
+  Updates: [Update] @hasMany(indexName: "byMember", fields: ["id"])
+  sponsor: String
+}
+ 
