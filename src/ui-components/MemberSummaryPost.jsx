@@ -18,8 +18,9 @@ export default function MemberSummaryPost(props) {
   const {
     member,
     onPictureIconClick,
-    nullString,
     imageSlot,
+    nullString,
+    onEditIconClick,
     overrides: overridesProp,
     ...restProp
   } = props;
@@ -208,6 +209,7 @@ export default function MemberSummaryPost(props) {
                   shrink="0"
                   position="relative"
                   padding="0px 0px 0px 0px"
+                  onClick={onEditIconClick}
                   {...getOverrideProps(overrides, "EditIconFrame")}
                 >
                   <MyIcon

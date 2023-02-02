@@ -10,8 +10,6 @@ import  studioTheme  from './ui-components/studioTheme';
 import '@aws-amplify/ui-react/styles.css';
 
 Amplify.configure(awsExports);
-
-console.log('BUCKET', awsExports.aws_user_files_s3_bucket);
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(

@@ -35,8 +35,9 @@ export declare type MemberSummaryPostOverridesProps = {
 export declare type MemberSummaryPostProps = React.PropsWithChildren<Partial<FlexProps> & {
     member?: Member;
     onPictureIconClick?: (event: SyntheticEvent) => void;
-    nullString?: String;
     imageSlot?: React.ReactNode;
+    nullString?: String;
+    onEditIconClick?: (event: SyntheticEvent) => void;
 } & {
     breakpoint?: "large" | "medium";
 } & {

@@ -44,6 +44,7 @@ export { default as MemberSummaryPost } from "./MemberSummaryPost";
 export { default as ActionCard } from "./ActionCard";
 export { default as MainPageTitlePanel } from "./MainPageTitlePanel";
 export { default as studioTheme } from "./studioTheme";
-export { default as MemberCreateForm } from "./MemberCreateForm";
 export { default as MemberUpdateForm } from "./MemberUpdateForm";
+export { default as MemberCreateForm } from "./MemberCreateForm";
 export { default as MemberCreateFormWithUpload } from "./MemberCreateFormWithUpload";
+export { default as MemberUpdateFormWithUpload } from "./MemberUpdateFormWithUpload";
