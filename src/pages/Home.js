@@ -40,7 +40,9 @@ import Modal from 'react-modal';
             />
             {isAdmin &&
               <>
-                <h3>Create a Member</h3>
+                 <div className='section-title'>
+                  <h3>Create a Member</h3>
+                </div>
                 <MemberCreateFormWithUpload />
               </>
             }

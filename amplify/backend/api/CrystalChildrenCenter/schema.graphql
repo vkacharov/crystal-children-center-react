@@ -1,5 +1,5 @@
 type Update @model @auth(rules: [
-        { allow: groups, groups: ["Admin"], operations: [read, update, delete] },
+        { allow: groups, groups: ["Admin"], operations: [create, read, update, delete] },
         { allow: groups, groups: ["Guest"], operations: [read] }
     ]) {
   id: ID!
@@ -10,7 +10,7 @@ type Update @model @auth(rules: [
 }
 
 type Member @model @auth(rules: [
-        { allow: groups, groups: ["Admin"], operations: [read, update, delete] },
+        { allow: groups, groups: ["Admin"], operations: [create, read, update, delete] },
         { allow: groups, groups: ["Guest"], operations: [read] }
     ]) {
   id: ID!
