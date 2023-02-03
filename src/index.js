@@ -13,7 +13,7 @@ Amplify.configure(awsExports);
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 async function clearDataStore() {
-  await Amplify.DataStore.clear();
+  await Amplify.DataStore.start();
 }
 clearDataStore();
 

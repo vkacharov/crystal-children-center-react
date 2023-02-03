@@ -8,6 +8,12 @@ import { withAuthenticator, Heading, Button } from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css';
 
 function App({ signOut, user }) {
+  let isAdmin = false;
+  const userGroups = user.signInUserSession.accessToken.payload["cognito:groups"];
+  if (userGroups) {
+    isAdmin = userGroups.includes('Admin');
+  }
+
   return (
     <div className="main-content">
       <div className="page-header">
@@ -18,7 +24,7 @@ function App({ signOut, user }) {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Layout />}>
-            <Route index element={<Home />}/>
+            <Route index element={<Home isAdmin={isAdmin}/>}/>
             <Route path="/member/:id" element = {<MemberView />} />
           </Route>
         </Routes>

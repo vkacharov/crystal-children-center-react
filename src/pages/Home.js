@@ -9,13 +9,15 @@ import '@aws-amplify/ui-react/styles.css';
 import Modal from 'react-modal';
 
   Modal.setAppElement()
-  function Home() {
+  function Home({ isAdmin }) {
     const [selectedMember, setSelectedMember] = useState();
     const [modalIsOpen, setModalIsOpen] = useState(false);
 
     const editIconClicked = (id) => {
-      setSelectedMember(id);
-      setModalIsOpen(true);
+      if (isAdmin) {
+        setSelectedMember(id);
+        setModalIsOpen(true);
+      }
     }
 
     return (
@@ -29,15 +31,19 @@ import Modal from 'react-modal';
               overrideItems={({ item }) => ({
                 imageSlot: 
                   <S3Image imgKey = {item.pictureUrl} imgPrefix = {item.id} />,
-                  onEditIconClick: () => editIconClicked(item.id)
+                onEditIconClick: () => editIconClicked(item.id),
+                isAdmin: isAdmin
               })}
 
               templateColumns = {{large: "1fr 1fr", medium: "1fr"}}
               width={{large: "1260px", medium: "480px"}}
             />
-
-            <h3>Create a Member</h3>
-            <MemberCreateFormWithUpload />
+            {isAdmin &&
+              <>
+                <h3>Create a Member</h3>
+                <MemberCreateFormWithUpload />
+              </>
+            }
           </header>
 
           <Modal
