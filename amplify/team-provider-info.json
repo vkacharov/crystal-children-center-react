@@ -18,6 +18,9 @@
       "storage": {
         "s3crystalchildrencenterstorage8c49dedb": {},
         "s3crystalchildrencenterstorage1095e3a0": {}
+      },
+      "api": {
+        "CrystalChildrenCenter": {}
       }
     }
   }

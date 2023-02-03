@@ -1,4 +1,7 @@
-type Update @model @auth(rules: [{allow: public}]) {
+type Update @model @auth(rules: [
+        { allow: groups, groups: ["Admin"], operations: [read, update, delete] },
+        { allow: groups, groups: ["Guest"], operations: [read] }
+    ]) {
   id: ID!
   date: AWSDate
   summary: String
@@ -6,7 +9,10 @@ type Update @model @auth(rules: [{allow: public}]) {
   pictureUrl: String
 }
 
-type Member @model @auth(rules: [{allow: public}]) {
+type Member @model @auth(rules: [
+        { allow: groups, groups: ["Admin"], operations: [read, update, delete] },
+        { allow: groups, groups: ["Guest"], operations: [read] }
+    ]) {
   id: ID!
   name: String
   age: Int
