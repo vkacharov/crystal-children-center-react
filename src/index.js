@@ -12,6 +12,11 @@ import '@aws-amplify/ui-react/styles.css';
 Amplify.configure(awsExports);
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
+async function clearDataStore() {
+  await Amplify.DataStore.clear();
+}
+clearDataStore();
+
 root.render(
   <AmplifyProvider theme = {studioTheme}>
     <App />
