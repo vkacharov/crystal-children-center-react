@@ -38,6 +38,7 @@ export declare type MemberSummaryPostProps = React.PropsWithChildren<Partial<Fle
     imageSlot?: React.ReactNode;
     nullString?: String;
     onEditIconClick?: (event: SyntheticEvent) => void;
+    isAdmin?: Boolean;
 } & {
     breakpoint?: "large" | "medium";
 } & {

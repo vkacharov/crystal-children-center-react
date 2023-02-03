@@ -21,6 +21,7 @@ export default function MemberSummaryPost(props) {
     imageSlot,
     nullString,
     onEditIconClick,
+    isAdmin = true,
     overrides: overridesProp,
     ...restProp
   } = props;
@@ -196,7 +197,7 @@ export default function MemberSummaryPost(props) {
                 shrink="0"
                 position="relative"
                 padding="0px 0px 0px 0px"
-                display="flex"
+                display={isAdmin && isAdmin == true ? "flex" : "none"}
                 {...getOverrideProps(overrides, "Frame 419")}
               >
                 <View
