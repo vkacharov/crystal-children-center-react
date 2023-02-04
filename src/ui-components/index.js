@@ -49,3 +49,4 @@ export { default as MemberCreateForm } from "./MemberCreateForm";
 export { default as MemberCreateFormWithUpload } from "./MemberCreateFormWithUpload";
 export { default as MemberUpdateFormWithUpload } from "./MemberUpdateFormWithUpload";
 export { default as UpdateCreateFormWithUpload } from "./UpdateCreateFormWithUpload";
+export { default as UpdateResponsiveCardCollectionWithMemberFilter } from "./UpdateResponsiveCardCollectionWithMemberFilter";

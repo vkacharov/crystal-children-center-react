@@ -7,21 +7,19 @@
 import * as React from "react";
 import { Update } from "../models";
 import { EscapeHatchProps } from "@aws-amplify/ui-react/internal";
-import { DividerProps, FlexProps, ImageProps, TextProps, ViewProps } from "@aws-amplify/ui-react";
+import { DividerProps, FlexProps, TextProps, ViewProps } from "@aws-amplify/ui-react";
 import { MyIconProps } from "./MyIcon";
 import { SyntheticEvent } from "react";
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
 export declare type UpdateResponsiveCardOverridesProps = {
     UpdateResponsiveCard?: PrimitiveOverrideProps<FlexProps>;
-    image?: PrimitiveOverrideProps<ImageProps>;
+    imageSlot?: PrimitiveOverrideProps<FlexProps>;
     "Card Area"?: PrimitiveOverrideProps<FlexProps>;
     Title?: PrimitiveOverrideProps<FlexProps>;
     Date?: PrimitiveOverrideProps<TextProps>;
     "Frame 459"?: PrimitiveOverrideProps<FlexProps>;
     EditIconFrame?: PrimitiveOverrideProps<ViewProps>;
     EditIcon?: MyIconProps;
-    PictureIconFrame?: PrimitiveOverrideProps<ViewProps>;
-    PictureIcon?: MyIconProps;
     DeleteIconFrame?: PrimitiveOverrideProps<ViewProps>;
     DeleteIcon?: MyIconProps;
     Divider?: PrimitiveOverrideProps<DividerProps>;
@@ -30,7 +28,8 @@ export declare type UpdateResponsiveCardOverridesProps = {
 } & EscapeHatchProps;
 export declare type UpdateResponsiveCardProps = React.PropsWithChildren<Partial<FlexProps> & {
     update?: Update;
-    onPictureIconClick?: (event: SyntheticEvent) => void;
+    imageSlot?: React.ReactNode;
+    onEditIconClick?: (event: SyntheticEvent) => void;
 } & {
     breakpoint?: "large" | "medium";
 } & {

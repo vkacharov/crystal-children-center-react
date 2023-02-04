@@ -1,9 +1,8 @@
-/***************************************************************************
- * The contents of this file were generated with Amplify Studio.           *
- * Please refrain from making any modifications to this file.              *
- * Any changes to this file will be overwritten when running amplify pull. *
- **************************************************************************/
-
+/**
+ * 
+ * Modification of the generated UpdateResponsiveCardCollection which filters for a given Member id.
+ * Following https://docs.amplify.aws/console/uibuilder/override/#modify-generated-code
+ */
 /* eslint-disable */
 import * as React from "react";
 import { Update } from "../models";
@@ -15,9 +14,9 @@ import {
 import { SortDirection } from "@aws-amplify/datastore";
 import UpdateResponsiveCard from "./UpdateResponsiveCard";
 import { Collection } from "@aws-amplify/ui-react";
-export default function UpdateResponsiveCardCollection(props) {
+export default function UpdateResponsiveCardCollectionWithMemberFilter(props) {
   const { items: itemsProp, overrideItems, overrides, ...rest } = props;
-  const itemsFilterObj = { field: "memberID", operand: "one", operator: "eq" };
+  const itemsFilterObj = { field: "memberID", operand: rest['memberid'], operator: "eq" };
   const itemsFilter = createDataStorePredicate(itemsFilterObj);
   const itemsPagination = { sort: (s) => s.date(SortDirection.DESCENDING) };
   const [items, setItems] = React.useState(undefined);

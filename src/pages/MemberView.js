@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import S3Image  from '../components/S3Image'; 
 
 import { 
-  MemberHeroResponsiveLayout, UpdateResponsiveCardCollection, UpdateCreateFormWithUpload
+  MemberHeroResponsiveLayout, UpdateResponsiveCardCollectionWithMemberFilter, UpdateCreateFormWithUpload
 } from '../ui-components';
 import { Member } from "../models";
 import { DataStore } from "aws-amplify";
@@ -28,8 +28,12 @@ import { DataStore } from "aws-amplify";
         <div className="section-title">
           <h2>Updates about {member.name}</h2>
         </div>
-        <UpdateResponsiveCardCollection 
+        <UpdateResponsiveCardCollectionWithMemberFilter 
           memberid={id}
+          overrideItems={({ item }) => ({
+            imageSlot: 
+              <S3Image imgKey = {item.pictureUrl} imgPrefix = {id + '/' + item.id} />,
+          })}
       />
 
       {isAdmin &&

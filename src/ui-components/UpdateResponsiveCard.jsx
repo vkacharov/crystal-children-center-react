@@ -14,7 +14,6 @@ import {
 import {
   Divider,
   Flex,
-  Image,
   Text,
   View,
   useBreakpointValue,
@@ -23,19 +22,18 @@ import MyIcon from "./MyIcon";
 export default function UpdateResponsiveCard(props) {
   const {
     update,
-    onPictureIconClick,
+    imageSlot,
+    onEditIconClick,
     overrides: overridesProp,
     ...restProp
   } = props;
   const variants = [
     {
       overrides: {
-        image: {},
+        imageSlot: {},
         Date: {},
         EditIcon: {},
         EditIconFrame: {},
-        PictureIcon: {},
-        PictureIconFrame: {},
         DeleteIcon: {},
         DeleteIconFrame: {},
         "Frame 459": {},
@@ -50,12 +48,10 @@ export default function UpdateResponsiveCard(props) {
     },
     {
       overrides: {
-        image: { height: "360px" },
+        imageSlot: { direction: "row", shrink: "1", grow: "1", basis: "0" },
         Date: {},
         EditIcon: {},
         EditIconFrame: {},
-        PictureIcon: {},
-        PictureIconFrame: {},
         DeleteIcon: {},
         DeleteIconFrame: {},
         "Frame 459": { display: "none" },
@@ -67,6 +63,7 @@ export default function UpdateResponsiveCard(props) {
         UpdateResponsiveCard: {
           direction: "column",
           width: "unset",
+          height: "830px",
           justifyContent: "center",
         },
       },
@@ -100,21 +97,21 @@ export default function UpdateResponsiveCard(props) {
       {...getOverrideProps(overrides, "UpdateResponsiveCard")}
       {...rest}
     >
-      <Image
+      <Flex
+        gap="10px"
+        direction="column"
         width="330px"
         height="unset"
-        display="block"
-        gap="unset"
-        alignItems="unset"
-        justifyContent="unset"
+        justifyContent="flex-start"
+        alignItems="flex-start"
         shrink="0"
         alignSelf="stretch"
         position="relative"
         padding="0px 0px 0px 0px"
-        objectFit="cover"
-        src={update?.pictureUrl}
-        {...getOverrideProps(overrides, "image")}
-      ></Image>
+        display="flex"
+        children={imageSlot}
+        {...getOverrideProps(overrides, "imageSlot")}
+      ></Flex>
       <Flex
         gap="24px"
         direction="column"
@@ -191,6 +188,7 @@ export default function UpdateResponsiveCard(props) {
               shrink="0"
               position="relative"
               padding="0px 0px 0px 0px"
+              onClick={onEditIconClick}
               {...getOverrideProps(overrides, "EditIconFrame")}
             >
               <MyIcon
@@ -207,35 +205,6 @@ export default function UpdateResponsiveCard(props) {
                 padding="0px 0px 0px 0px"
                 type="edit"
                 {...getOverrideProps(overrides, "EditIcon")}
-              ></MyIcon>
-            </View>
-            <View
-              width="24px"
-              height="24px"
-              display="block"
-              gap="unset"
-              alignItems="unset"
-              justifyContent="unset"
-              shrink="0"
-              position="relative"
-              padding="0px 0px 0px 0px"
-              onClick={onPictureIconClick}
-              {...getOverrideProps(overrides, "PictureIconFrame")}
-            >
-              <MyIcon
-                width="24px"
-                height="24px"
-                display="block"
-                gap="unset"
-                alignItems="unset"
-                justifyContent="unset"
-                overflow="hidden"
-                position="absolute"
-                top="0px"
-                left="0px"
-                padding="0px 0px 0px 0px"
-                type="group"
-                {...getOverrideProps(overrides, "PictureIcon")}
               ></MyIcon>
             </View>
             <View
