@@ -5,7 +5,6 @@ import {
 import S3Image  from '../components/S3Image'; 
 import { useState } from 'react';
 import '@aws-amplify/ui-react/styles.css';
-import '@aws-amplify/ui-react/styles.css';
 import Modal from 'react-modal';
 
   Modal.setAppElement()
@@ -50,7 +49,7 @@ import Modal from 'react-modal';
 
           <Modal
             isOpen={modalIsOpen}
-            contentLabel="Example Modal"
+            contentLabel="Member Modal"
           >
             <MemberUpdateFormWithUpload id={selectedMember} 
               onSuccess = {() => {

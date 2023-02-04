@@ -1,24 +1,20 @@
-/**
- * 
- * Modification of the generated UpdateCreateForm which handles file upload.
- * Following https://docs.amplify.aws/console/uibuilder/override/#modify-generated-code
- */
+/***************************************************************************
+ * The contents of this file were generated with Amplify Studio.           *
+ * Please refrain from making any modifications to this file.              *
+ * Any changes to this file will be overwritten when running amplify pull. *
+ **************************************************************************/
+
 /* eslint-disable */
 import * as React from "react";
-import {
-  Button,
-  Flex,
-  Grid,
-  TextAreaField,
-  TextField,
-} from "@aws-amplify/ui-react";
+import { Button, Flex, Grid, TextField } from "@aws-amplify/ui-react";
 import { getOverrideProps } from "@aws-amplify/ui-react/internal";
 import { Update } from "../models";
 import { fetchByPath, validateField } from "./utils";
-import { DataStore, Storage } from "aws-amplify";
-export default function UpdateCreateFormWithUpload(props) {
+import { DataStore } from "aws-amplify";
+export default function UpdateUpdateForm(props) {
   const {
-    clearOnSuccess = true,
+    id: idProp,
+    update,
     onSuccess,
     onError,
     onSubmit,
@@ -31,27 +27,29 @@ export default function UpdateCreateFormWithUpload(props) {
     date: "",
     summary: "",
     pictureUrl: "",
-    picturePath: "", 
-    pictureFile: {},
-    memberID: rest['memberid']
   };
   const [date, setDate] = React.useState(initialValues.date);
   const [summary, setSummary] = React.useState(initialValues.summary);
   const [pictureUrl, setPictureUrl] = React.useState(initialValues.pictureUrl);
-  const [picturePath, setPicturePath] = React.useState(initialValues.picturePath);
-  const [pictureFile, setPictureFile] = React.useState(initialValues.pictureFile);
-  const [memberID, setMemberID] = React.useState(initialValues.memberID);
   const [errors, setErrors] = React.useState({});
-
   const resetStateValues = () => {
-    setDate(initialValues.date);
-    setSummary(initialValues.summary);
-    setPictureUrl(initialValues.pictureUrl);
-    setPicturePath(initialValues.picturePath);
-    setPictureFile(initialValues.pictureFile);
-    setMemberID(initialValues.memberID);
+    const cleanValues = updateRecord
+      ? { ...initialValues, ...updateRecord }
+      : initialValues;
+    setDate(cleanValues.date);
+    setSummary(cleanValues.summary);
+    setPictureUrl(cleanValues.pictureUrl);
     setErrors({});
   };
+  const [updateRecord, setUpdateRecord] = React.useState(update);
+  React.useEffect(() => {
+    const queryData = async () => {
+      const record = idProp ? await DataStore.query(Update, idProp) : update;
+      setUpdateRecord(record);
+    };
+    queryData();
+  }, [idProp, update]);
+  React.useEffect(resetStateValues, [updateRecord]);
   const validations = {
     date: [],
     summary: [],
@@ -85,7 +83,6 @@ export default function UpdateCreateFormWithUpload(props) {
           date,
           summary,
           pictureUrl,
-          memberID
         };
         const validationResponses = await Promise.all(
           Object.keys(validations).reduce((promises, fieldName) => {
@@ -115,15 +112,13 @@ export default function UpdateCreateFormWithUpload(props) {
               modelFields[key] = undefined;
             }
           });
-          let createdUpdate = await DataStore.save(new Update(modelFields));
-          let pictureKey = memberID + '/' + createdUpdate.id + '/' + pictureUrl;
-          let uploadedFile = await Storage.put(pictureKey, pictureFile);
-
+          await DataStore.save(
+            Update.copyOf(updateRecord, (updated) => {
+              Object.assign(updated, modelFields);
+            })
+          );
           if (onSuccess) {
             onSuccess(modelFields);
-          }
-          if (clearOnSuccess) {
-            resetStateValues();
           }
         } catch (err) {
           if (onError) {
@@ -131,7 +126,7 @@ export default function UpdateCreateFormWithUpload(props) {
           }
         }
       }}
-      {...getOverrideProps(overrides, "UpdateCreateForm")}
+      {...getOverrideProps(overrides, "UpdateUpdateForm")}
       {...rest}
     >
       <TextField
@@ -161,10 +156,11 @@ export default function UpdateCreateFormWithUpload(props) {
         hasError={errors.date?.hasError}
         {...getOverrideProps(overrides, "date")}
       ></TextField>
-      <TextAreaField
+      <TextField
         label="Summary"
         isRequired={false}
         isReadOnly={false}
+        value={summary}
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
@@ -185,15 +181,13 @@ export default function UpdateCreateFormWithUpload(props) {
         errorMessage={errors.summary?.errorMessage}
         hasError={errors.summary?.hasError}
         {...getOverrideProps(overrides, "summary")}
-      ></TextAreaField>
+      ></TextField>
       <TextField
-        type="file"
-        label="Picture"
+        label="Picture url"
         isRequired={false}
         isReadOnly={false}
-        value={picturePath}
+        value={pictureUrl}
         onChange={(e) => {
-          let pictureFile = e.target.files[0];
           let { value } = e.target;
           if (onChange) {
             const modelFields = {
@@ -203,15 +197,11 @@ export default function UpdateCreateFormWithUpload(props) {
             };
             const result = onChange(modelFields);
             value = result?.pictureUrl ?? value;
-            
           }
           if (errors.pictureUrl?.hasError) {
             runValidationTasks("pictureUrl", value);
           }
-          setPicturePath(value);
-          setPictureFile(pictureFile);
-          setPictureUrl(pictureFile.name);
-        
+          setPictureUrl(value);
         }}
         onBlur={() => runValidationTasks("pictureUrl", pictureUrl)}
         errorMessage={errors.pictureUrl?.errorMessage}
@@ -223,13 +213,14 @@ export default function UpdateCreateFormWithUpload(props) {
         {...getOverrideProps(overrides, "CTAFlex")}
       >
         <Button
-          children="Clear"
+          children="Reset"
           type="reset"
           onClick={(event) => {
             event.preventDefault();
             resetStateValues();
           }}
-          {...getOverrideProps(overrides, "ClearButton")}
+          isDisabled={!(idProp || update)}
+          {...getOverrideProps(overrides, "ResetButton")}
         ></Button>
         <Flex
           gap="15px"
@@ -239,7 +230,10 @@ export default function UpdateCreateFormWithUpload(props) {
             children="Submit"
             type="submit"
             variation="primary"
-            isDisabled={Object.values(errors).some((e) => e?.hasError)}
+            isDisabled={
+              !(idProp || update) ||
+              Object.values(errors).some((e) => e?.hasError)
+            }
             {...getOverrideProps(overrides, "SubmitButton")}
           ></Button>
         </Flex>

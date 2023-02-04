@@ -1,9 +1,9 @@
-/***************************************************************************
- * The contents of this file were generated with Amplify Studio.           *
- * Please refrain from making any modifications to this file.              *
- * Any changes to this file will be overwritten when running amplify pull. *
- **************************************************************************/
-
+/**
+ * 
+ * Modification of the generated UpdateCreateForm which handles file upload.
+ * Following https://docs.amplify.aws/console/uibuilder/override/#modify-generated-code
+ */
+/* eslint-disable */
 import * as React from "react";
 import { GridProps, TextAreaFieldProps, TextFieldProps } from "@aws-amplify/ui-react";
 import { EscapeHatchProps } from "@aws-amplify/ui-react/internal";
