@@ -83,6 +83,7 @@ export const schema = {
                                     "Admin"
                                 ],
                                 "operations": [
+                                    "create",
                                     "read",
                                     "update",
                                     "delete"
@@ -215,6 +216,7 @@ export const schema = {
                                     "Admin"
                                 ],
                                 "operations": [
+                                    "create",
                                     "read",
                                     "update",
                                     "delete"

@@ -25,7 +25,7 @@ function App({ signOut, user }) {
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<Home isAdmin={isAdmin}/>}/>
-            <Route path="/member/:id" element = {<MemberView />} />
+            <Route path="/member/:id" element = {<MemberView isAdmin={isAdmin} />} />
           </Route>
         </Routes>
       </BrowserRouter>
@@ -33,4 +33,4 @@ function App({ signOut, user }) {
   )
 }
 
-export default withAuthenticator(App);
+export default withAuthenticator(App, {hideSignUp: true});

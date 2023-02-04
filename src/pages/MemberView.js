@@ -3,12 +3,12 @@ import { useEffect, useState } from 'react';
 import S3Image  from '../components/S3Image'; 
 
 import { 
-  MemberHeroResponsiveLayout, UpdateResponsiveCardCollection, 
+  MemberHeroResponsiveLayout, UpdateResponsiveCardCollection, UpdateCreateFormWithUpload
 } from '../ui-components';
 import { Member } from "../models";
 import { DataStore } from "aws-amplify";
 
-  function MemberView() {
+  function MemberView({isAdmin}) {
     const { id } = useParams();
     const [member, setMember] = useState({});
 
@@ -23,7 +23,7 @@ import { DataStore } from "aws-amplify";
       <div className="member">
         <MemberHeroResponsiveLayout member = {member} 
         imageSlot = {
-          <S3Image imgKey={member.pictureUrl}/>
+          <S3Image imgKey={member.pictureUrl} imgPrefix={id}/>
         }/>
         <div className="section-title">
           <h2>Updates about {member.name}</h2>
@@ -31,6 +31,16 @@ import { DataStore } from "aws-amplify";
         <UpdateResponsiveCardCollection 
           memberid={id}
       />
+
+      {isAdmin &&
+        <>
+            <div className='section-title'>
+            <h3>Add an Update</h3>
+          </div>
+          <UpdateCreateFormWithUpload memberid={id} />
+        </>
+      }
+
       </div>
     );
   }

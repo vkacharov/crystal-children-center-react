@@ -1,9 +1,3 @@
-/**
- * 
- * Modification of the generated MemberCreateForm which handles file upload.
- * Following https://docs.amplify.aws/console/uibuilder/override/#modify-generated-code
- */
-/* eslint-disable */
 import * as React from "react";
 import {
   Button,
@@ -13,10 +7,10 @@ import {
   TextField,
 } from "@aws-amplify/ui-react";
 import { getOverrideProps } from "@aws-amplify/ui-react/internal";
-import { Member } from "../models";
+import { Update } from "../models";
 import { fetchByPath, validateField } from "./utils";
 import { DataStore, Storage } from "aws-amplify";
-export default function MemberCreateFormWithUpload(props) {
+export default function UpdateCreateFormWithUpload(props) {
   const {
     clearOnSuccess = true,
     onSuccess,
@@ -28,45 +22,33 @@ export default function MemberCreateFormWithUpload(props) {
     ...rest
   } = props;
   const initialValues = {
-    name: "",
-    age: "",
     date: "",
     summary: "",
-    bio: "",
-    sponsor: "",
     pictureUrl: "",
-    picturePath: "",
-    pictureFile: {}
+    picturePath: "", 
+    pictureFile: {},
+    memberID: rest['memberid']
   };
-  const [name, setName] = React.useState(initialValues.name);
-  const [age, setAge] = React.useState(initialValues.age);
   const [date, setDate] = React.useState(initialValues.date);
   const [summary, setSummary] = React.useState(initialValues.summary);
-  const [bio, setBio] = React.useState(initialValues.bio);
-  const [sponsor, setSponsor] = React.useState(initialValues.sponsor);
   const [pictureUrl, setPictureUrl] = React.useState(initialValues.pictureUrl);
   const [picturePath, setPicturePath] = React.useState(initialValues.picturePath);
   const [pictureFile, setPictureFile] = React.useState(initialValues.pictureFile);
+  const [memberID] = React.useState(initialValues.memberID);
   const [errors, setErrors] = React.useState({});
+  console.log('MEMBERID', initialValues.memberID);
+
   const resetStateValues = () => {
-    setName(initialValues.name);
-    setAge(initialValues.age);
     setDate(initialValues.date);
     setSummary(initialValues.summary);
-    setBio(initialValues.bio);
-    setSponsor(initialValues.sponsor);
     setPictureUrl(initialValues.pictureUrl);
     setPicturePath(initialValues.picturePath);
-    setPictureFile(initialValues.picturePath);
+    setPictureFile(initialValues.pictureFile);
     setErrors({});
   };
   const validations = {
-    name: [],
-    age: [],
     date: [],
     summary: [],
-    bio: [],
-    sponsor: [],
     pictureUrl: [],
   };
   const runValidationTasks = async (
@@ -94,13 +76,10 @@ export default function MemberCreateFormWithUpload(props) {
       onSubmit={async (event) => {
         event.preventDefault();
         let modelFields = {
-          name,
-          age,
           date,
           summary,
-          bio,
-          sponsor,
-          pictureUrl
+          pictureUrl,
+          memberID
         };
         const validationResponses = await Promise.all(
           Object.keys(validations).reduce((promises, fieldName) => {
@@ -130,8 +109,8 @@ export default function MemberCreateFormWithUpload(props) {
               modelFields[key] = undefined;
             }
           });
-          let createdMember = await DataStore.save(new Member(modelFields));
-          let pictureKey = createdMember.id + '/' + pictureUrl;
+          let createdUpdate = await DataStore.save(new Update(modelFields));
+          let pictureKey = memberID + '/' + createdUpdate.id + '/' + pictureUrl;
           let uploadedFile = await Storage.put(pictureKey, pictureFile);
 
           if (onSuccess) {
@@ -140,80 +119,15 @@ export default function MemberCreateFormWithUpload(props) {
           if (clearOnSuccess) {
             resetStateValues();
           }
-          
         } catch (err) {
           if (onError) {
             onError(modelFields, err.message);
           }
         }
       }}
-      {...getOverrideProps(overrides, "MemberCreateForm")}
+      {...getOverrideProps(overrides, "UpdateCreateForm")}
       {...rest}
     >
-      <TextField
-        label="Name"
-        isRequired={false}
-        isReadOnly={false}
-        value={name}
-        onChange={(e) => {
-          let { value } = e.target;
-          if (onChange) {
-            const modelFields = {
-              name: value,
-              age,
-              date,
-              summary,
-              bio,
-              sponsor,
-              pictureUrl,
-            };
-            const result = onChange(modelFields);
-            value = result?.name ?? value;
-          }
-          if (errors.name?.hasError) {
-            runValidationTasks("name", value);
-          }
-          setName(value);
-        }}
-        onBlur={() => runValidationTasks("name", name)}
-        errorMessage={errors.name?.errorMessage}
-        hasError={errors.name?.hasError}
-        {...getOverrideProps(overrides, "name")}
-      ></TextField>
-      <TextField
-        label="Age"
-        isRequired={false}
-        isReadOnly={false}
-        type="number"
-        step="any"
-        value={age}
-        onChange={(e) => {
-          let value = isNaN(parseInt(e.target.value))
-            ? e.target.value
-            : parseInt(e.target.value);
-          if (onChange) {
-            const modelFields = {
-              name,
-              age: value,
-              date,
-              summary,
-              bio,
-              sponsor,
-              pictureUrl,
-            };
-            const result = onChange(modelFields);
-            value = result?.age ?? value;
-          }
-          if (errors.age?.hasError) {
-            runValidationTasks("age", value);
-          }
-          setAge(value);
-        }}
-        onBlur={() => runValidationTasks("age", age)}
-        errorMessage={errors.age?.errorMessage}
-        hasError={errors.age?.hasError}
-        {...getOverrideProps(overrides, "age")}
-      ></TextField>
       <TextField
         label="Date"
         isRequired={false}
@@ -224,12 +138,8 @@ export default function MemberCreateFormWithUpload(props) {
           let { value } = e.target;
           if (onChange) {
             const modelFields = {
-              name,
-              age,
               date: value,
               summary,
-              bio,
-              sponsor,
               pictureUrl,
             };
             const result = onChange(modelFields);
@@ -253,12 +163,8 @@ export default function MemberCreateFormWithUpload(props) {
           let { value } = e.target;
           if (onChange) {
             const modelFields = {
-              name,
-              age,
               date,
               summary: value,
-              bio,
-              sponsor,
               pictureUrl,
             };
             const result = onChange(modelFields);
@@ -274,86 +180,24 @@ export default function MemberCreateFormWithUpload(props) {
         hasError={errors.summary?.hasError}
         {...getOverrideProps(overrides, "summary")}
       ></TextAreaField>
-      <TextAreaField
-        label="Bio"
-        isRequired={false}
-        isReadOnly={false}
-        onChange={(e) => {
-          let { value } = e.target;
-          if (onChange) {
-            const modelFields = {
-              name,
-              age,
-              date,
-              summary,
-              bio: value,
-              sponsor,
-              pictureUrl,
-            };
-            const result = onChange(modelFields);
-            value = result?.bio ?? value;
-          }
-          if (errors.bio?.hasError) {
-            runValidationTasks("bio", value);
-          }
-          setBio(value);
-        }}
-        onBlur={() => runValidationTasks("bio", bio)}
-        errorMessage={errors.bio?.errorMessage}
-        hasError={errors.bio?.hasError}
-        {...getOverrideProps(overrides, "bio")}
-      ></TextAreaField>
       <TextField
-        label="Sponsor"
-        isRequired={false}
-        isReadOnly={false}
-        value={sponsor}
-        onChange={(e) => {
-          let { value } = e.target;
-          if (onChange) {
-            const modelFields = {
-              name,
-              age,
-              date,
-              summary,
-              bio,
-              sponsor: value,
-              pictureUrl,
-            };
-            const result = onChange(modelFields);
-            value = result?.sponsor ?? value;
-          }
-          if (errors.sponsor?.hasError) {
-            runValidationTasks("sponsor", value);
-          }
-          setSponsor(value);
-        }}
-        onBlur={() => runValidationTasks("sponsor", sponsor)}
-        errorMessage={errors.sponsor?.errorMessage}
-        hasError={errors.sponsor?.hasError}
-        {...getOverrideProps(overrides, "sponsor")}
-      ></TextField>
-      <TextField
-        label="Picture"
         type="file"
+        label="Picture"
         isRequired={false}
         isReadOnly={false}
         value={picturePath}
         onChange={(e) => {
           let pictureFile = e.target.files[0];
-          let {value}  = e.target;
+          let { value } = e.target;
           if (onChange) {
             const modelFields = {
-              name,
-              age,
               date,
               summary,
-              bio,
-              sponsor,
               pictureUrl: value,
             };
             const result = onChange(modelFields);
             value = result?.pictureUrl ?? value;
+            
           }
           if (errors.pictureUrl?.hasError) {
             runValidationTasks("pictureUrl", value);
@@ -361,6 +205,7 @@ export default function MemberCreateFormWithUpload(props) {
           setPicturePath(value);
           setPictureFile(pictureFile);
           setPictureUrl(pictureFile.name);
+        
         }}
         onBlur={() => runValidationTasks("pictureUrl", pictureUrl)}
         errorMessage={errors.pictureUrl?.errorMessage}
