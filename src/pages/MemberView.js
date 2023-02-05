@@ -1,15 +1,16 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from 'react';
 import S3Image  from '../components/S3Image';
-import '@aws-amplify/ui-react/styles.css';
 import Modal from 'react-modal';
-
 import { 
   MemberHeroResponsiveLayout, UpdateResponsiveCardCollectionWithMemberFilter, UpdateCreateFormWithUpload,
   UpdateUpdateFormWithUpload
 } from '../ui-components';
-import { Member } from "../models";
+import { Member, Update } from "../models";
 import { DataStore } from "aws-amplify";
+import { confirmAlert } from 'react-confirm-alert';
+import '@aws-amplify/ui-react/styles.css';
+import 'react-confirm-alert/src/react-confirm-alert.css';
 
   function MemberView({isAdmin}) {
     const { id } = useParams();
@@ -32,6 +33,33 @@ import { DataStore } from "aws-amplify";
       }
     }
 
+    const deleteUpdate = async (updateId) => {
+      if (isAdmin) {
+        const update = await DataStore.query(Update, updateId);
+        if (update) {
+          DataStore.delete(update);
+        }
+      }
+    }
+
+    const deleteIconClicked = (updateId) => {
+      if (isAdmin) {
+        confirmAlert({
+          title: 'Delete Update',
+          message: 'Are you sure you want to delete this Update?',
+          buttons: [
+            {
+              label: 'Yes',
+              onClick: () => deleteUpdate(updateId)
+            },
+            {
+              label: 'No',
+            }
+          ]
+        });
+      }
+    }
+
     return (
       <div className="member">
         <MemberHeroResponsiveLayout member = {member}
@@ -47,7 +75,8 @@ import { DataStore } from "aws-amplify";
           overrideItems={({ item }) => ({
             imageSlot: 
               <S3Image imgKey = {item.pictureUrl} imgPrefix = {id + '/' + item.id} />,
-            onEditIconClick: () => editIconClicked(item.id)
+            onEditIconClick: () => editIconClicked(item.id),
+            onDeleteIconClick: () => deleteIconClicked(item.id),
           })}
       />
 

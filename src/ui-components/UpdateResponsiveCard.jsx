@@ -24,6 +24,7 @@ export default function UpdateResponsiveCard(props) {
     update,
     imageSlot,
     onEditIconClick,
+    onDeleteIconClick,
     overrides: overridesProp,
     ...restProp
   } = props;
@@ -217,6 +218,7 @@ export default function UpdateResponsiveCard(props) {
               shrink="0"
               position="relative"
               padding="0px 0px 0px 0px"
+              onClick={onDeleteIconClick}
               {...getOverrideProps(overrides, "DeleteIconFrame")}
             >
               <MyIcon

@@ -30,6 +30,7 @@ export declare type UpdateResponsiveCardProps = React.PropsWithChildren<Partial<
     update?: Update;
     imageSlot?: React.ReactNode;
     onEditIconClick?: (event: SyntheticEvent) => void;
+    onDeleteIconClick?: (event: SyntheticEvent) => void;
 } & {
     breakpoint?: "large" | "medium";
 } & {
