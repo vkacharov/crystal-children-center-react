@@ -34,10 +34,11 @@ export declare type MemberSummaryPostOverridesProps = {
 } & EscapeHatchProps;
 export declare type MemberSummaryPostProps = React.PropsWithChildren<Partial<FlexProps> & {
     member?: Member;
-    onPictureIconClick?: (event: SyntheticEvent) => void;
     imageSlot?: React.ReactNode;
     nullString?: String;
     onEditIconClick?: (event: SyntheticEvent) => void;
+    onPictureIconClick?: (event: SyntheticEvent) => void;
+    onDeleteIconClick?: (event: SyntheticEvent) => void;
     isAdmin?: Boolean;
 } & {
     breakpoint?: "large" | "medium";

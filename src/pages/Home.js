@@ -4,8 +4,12 @@ import {
   } from '../ui-components';
 import S3Image  from '../components/S3Image'; 
 import { useState } from 'react';
-import '@aws-amplify/ui-react/styles.css';
 import Modal from 'react-modal';
+import { Member } from "../models";
+import { DataStore } from 'aws-amplify';
+import { confirmAlert } from 'react-confirm-alert';
+import '@aws-amplify/ui-react/styles.css';
+import 'react-confirm-alert/src/react-confirm-alert.css';
 
   Modal.setAppElement()
   function Home({ isAdmin }) {
@@ -16,6 +20,33 @@ import Modal from 'react-modal';
       if (isAdmin) {
         setSelectedMember(id);
         setModalIsOpen(true);
+      }
+    }
+
+    const deleteMember = async (memberId) => {
+      if (isAdmin) {
+        const member = await DataStore.query(Member, memberId);
+        if (member) {
+          DataStore.delete(member);
+        }
+      }
+    }
+
+    const deleteIconClicked = (memberId, memberName) => {
+      if (isAdmin) {
+        confirmAlert({
+          title: 'Delete Member',
+          message: `Are you sure you want to delete ${memberName}?`,
+          buttons: [
+            {
+              label: 'Yes',
+              onClick: () => deleteMember(memberId)
+            },
+            {
+              label: 'No',
+            }
+          ]
+        });
       }
     }
 
@@ -31,6 +62,7 @@ import Modal from 'react-modal';
                 imageSlot: 
                   <S3Image imgKey = {item.pictureUrl} imgPrefix = {item.id} />,
                 onEditIconClick: () => editIconClicked(item.id),
+                onDeleteIconClick: () => deleteIconClicked(item.id, item.name),
                 isAdmin: isAdmin
               })}
 

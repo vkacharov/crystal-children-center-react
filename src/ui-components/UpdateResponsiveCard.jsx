@@ -49,7 +49,7 @@ export default function UpdateResponsiveCard(props) {
     },
     {
       overrides: {
-        imageSlot: { direction: "row", shrink: "1", grow: "1", basis: "0" },
+        imageSlot: { direction: "row", height: "380px" },
         Date: {},
         EditIcon: {},
         EditIconFrame: {},
@@ -64,7 +64,6 @@ export default function UpdateResponsiveCard(props) {
         UpdateResponsiveCard: {
           direction: "column",
           width: "unset",
-          height: "830px",
           justifyContent: "center",
         },
       },
