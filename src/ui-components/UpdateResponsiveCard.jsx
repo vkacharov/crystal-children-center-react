@@ -25,6 +25,7 @@ export default function UpdateResponsiveCard(props) {
     imageSlot,
     onEditIconClick,
     onDeleteIconClick,
+    isAdmin = false,
     overrides: overridesProp,
     ...restProp
   } = props;
@@ -49,7 +50,7 @@ export default function UpdateResponsiveCard(props) {
     },
     {
       overrides: {
-        imageSlot: { direction: "row", height: "380px" },
+        imageSlot: { direction: "row" },
         Date: {},
         EditIcon: {},
         EditIconFrame: {},
@@ -60,10 +61,14 @@ export default function UpdateResponsiveCard(props) {
         Divider: {},
         Summary: {},
         Features: {},
-        "Card Area": { shrink: "0", alignSelf: "stretch" },
+        "Card Area": {
+          shrink: "0",
+          padding: "16px 16px 16px 16px",
+          alignSelf: "stretch",
+        },
         UpdateResponsiveCard: {
           direction: "column",
-          width: "unset",
+          width: "330px",
           justifyContent: "center",
         },
       },
@@ -175,7 +180,7 @@ export default function UpdateResponsiveCard(props) {
             shrink="0"
             position="relative"
             padding="0px 0px 0px 0px"
-            display="flex"
+            display={isAdmin && isAdmin == true ? "flex" : "none"}
             {...getOverrideProps(overrides, "Frame 459")}
           >
             <View

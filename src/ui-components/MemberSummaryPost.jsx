@@ -29,6 +29,7 @@ export default function MemberSummaryPost(props) {
   const variants = [
     {
       overrides: {
+        ImageSlot: {},
         Name: {},
         EditIcon: {},
         EditIconFrame: {},
@@ -45,7 +46,6 @@ export default function MemberSummaryPost(props) {
         ReadMore: {},
         "Read more": {},
         Text: {},
-        ImageSlot: {},
         Body: {},
         MemberSummaryPost: {},
       },
@@ -53,6 +53,7 @@ export default function MemberSummaryPost(props) {
     },
     {
       overrides: {
+        ImageSlot: {},
         Name: {},
         EditIcon: {},
         EditIconFrame: {},
@@ -68,16 +69,45 @@ export default function MemberSummaryPost(props) {
         MyIcon: {},
         ReadMore: {},
         "Read more": {},
+        Text: { shrink: "0", alignSelf: "stretch" },
+        Body: {
+          direction: "column",
+          width: "unset",
+          alignItems: "center",
+          alignSelf: "stretch",
+        },
+        MemberSummaryPost: { width: "330px" },
+      },
+      variantValues: { breakpoint: "small" },
+    },
+    {
+      overrides: {
+        ImageSlot: {},
+        Name: {},
+        EditIcon: {},
+        EditIconFrame: {},
+        DeleteIcon: {},
+        DeleteIconFrame: {},
+        "Frame 419": {},
+        Frame36792698: {},
+        Sponsor: {},
+        Frame36692723: {},
+        Headline: {},
+        Summary: {},
+        Article: {},
+        MyIcon: {},
+        ReadMore: {},
+        "Read more": {},
         Text: {},
-        ImageSlot: { width: "160px" },
         Body: {},
-        MemberSummaryPost: { width: "480px" },
+        MemberSummaryPost: {},
       },
       variantValues: { breakpoint: "medium" },
     },
   ];
   const breakpointHook = useBreakpointValue({
-    base: "medium",
+    base: "small",
+    small: "small",
     medium: "medium",
     large: "large",
   });
@@ -97,7 +127,7 @@ export default function MemberSummaryPost(props) {
     <Flex
       gap="16px"
       direction="column"
-      width="615px"
+      width="unset"
       height="unset"
       justifyContent="flex-start"
       alignItems="flex-start"
@@ -109,19 +139,34 @@ export default function MemberSummaryPost(props) {
       {...rest}
     >
       <Flex
-        gap="40px"
+        gap="20px"
         direction="row"
-        width="unset"
+        width="567px"
         height="unset"
         justifyContent="flex-start"
         alignItems="flex-start"
         shrink="0"
-        alignSelf="stretch"
         position="relative"
         padding="0px 0px 0px 0px"
         display="flex"
         {...getOverrideProps(overrides, "Body")}
       >
+        <Flex
+          gap="10px"
+          direction="row"
+          width="250px"
+          height="unset"
+          justifyContent="flex-start"
+          alignItems="flex-start"
+          shrink="0"
+          alignSelf="stretch"
+          position="relative"
+          borderRadius="10px"
+          padding="0px 0px 0px 0px"
+          display="flex"
+          children={imageSlot}
+          {...getOverrideProps(overrides, "ImageSlot")}
+        ></Flex>
         <Flex
           gap="16px"
           direction="column"
@@ -394,22 +439,6 @@ export default function MemberSummaryPost(props) {
             ></Text>
           </Flex>
         </Flex>
-        <Flex
-          gap="10px"
-          direction="row"
-          width="175px"
-          height="unset"
-          justifyContent="flex-start"
-          alignItems="flex-start"
-          shrink="0"
-          alignSelf="stretch"
-          position="relative"
-          borderRadius="10px"
-          padding="0px 0px 0px 0px"
-          display="flex"
-          children={imageSlot}
-          {...getOverrideProps(overrides, "ImageSlot")}
-        ></Flex>
       </Flex>
     </Flex>
   );

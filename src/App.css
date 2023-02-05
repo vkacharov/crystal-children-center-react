@@ -48,6 +48,10 @@
   align-items: center;
 }
 
+.member-hero-text {
+  overflow: unset !important;
+}
+
 .section-title {
   border-top: 1px solid gray;
     width: 80%;

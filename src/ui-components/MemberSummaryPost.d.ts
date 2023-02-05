@@ -14,6 +14,7 @@ export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes
 export declare type MemberSummaryPostOverridesProps = {
     MemberSummaryPost?: PrimitiveOverrideProps<FlexProps>;
     Body?: PrimitiveOverrideProps<FlexProps>;
+    ImageSlot?: PrimitiveOverrideProps<FlexProps>;
     Text?: PrimitiveOverrideProps<FlexProps>;
     Headline?: PrimitiveOverrideProps<FlexProps>;
     Frame36792698?: PrimitiveOverrideProps<FlexProps>;
@@ -30,7 +31,6 @@ export declare type MemberSummaryPostOverridesProps = {
     "Read more"?: PrimitiveOverrideProps<FlexProps>;
     MyIcon?: MyIconProps;
     ReadMore?: PrimitiveOverrideProps<TextProps>;
-    ImageSlot?: PrimitiveOverrideProps<FlexProps>;
 } & EscapeHatchProps;
 export declare type MemberSummaryPostProps = React.PropsWithChildren<Partial<FlexProps> & {
     member?: Member;
@@ -41,7 +41,7 @@ export declare type MemberSummaryPostProps = React.PropsWithChildren<Partial<Fle
     onDeleteIconClick?: (event: SyntheticEvent) => void;
     isAdmin?: Boolean;
 } & {
-    breakpoint?: "large" | "medium";
+    breakpoint?: "large" | "medium" | "small";
 } & {
     overrides?: MemberSummaryPostOverridesProps | undefined | null;
 }>;

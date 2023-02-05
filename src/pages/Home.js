@@ -74,7 +74,7 @@ import 'react-confirm-alert/src/react-confirm-alert.css';
                  <div className='section-title'>
                   <h3>Create a Member</h3>
                 </div>
-                <MemberCreateFormWithUpload />
+                <MemberCreateFormWithUpload clearOnSuccess={true}/>
               </>
             }
           </header>
@@ -83,7 +83,7 @@ import 'react-confirm-alert/src/react-confirm-alert.css';
             isOpen={modalIsOpen}
             contentLabel="Member Modal"
           >
-            <MemberUpdateFormWithUpload id={selectedMember} 
+            <MemberUpdateFormWithUpload id={selectedMember} clearOnSuccess={true}
               onSuccess = {() => {
                 setModalIsOpen(false);
               }}

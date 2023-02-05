@@ -75,17 +75,18 @@ import 'react-confirm-alert/src/react-confirm-alert.css';
           overrideItems={({ item }) => ({
             imageSlot: 
               <S3Image imgKey = {item.pictureUrl} imgPrefix = {id + '/' + item.id} />,
-            onEditIconClick: () => editIconClicked(item.id),
-            onDeleteIconClick: () => deleteIconClicked(item.id),
+              onEditIconClick: () => editIconClicked(item.id),
+              onDeleteIconClick: () => deleteIconClicked(item.id),
+              isAdmin: isAdmin
           })}
       />
 
       {isAdmin &&
         <>
-            <div className='section-title'>
+          <div className='section-title'>
             <h3>Add an Update</h3>
           </div>
-          <UpdateCreateFormWithUpload memberid={id} />
+          <UpdateCreateFormWithUpload memberid={id} clearOnSuccess={true} />
         </>
       }
 
@@ -94,6 +95,7 @@ import 'react-confirm-alert/src/react-confirm-alert.css';
             contentLabel="Update Modal"
           >
             <UpdateUpdateFormWithUpload 
+              clearOnSuccess={true}
               id = {selectedUpdate}
               memberid={id}
               onSuccess = {() => {

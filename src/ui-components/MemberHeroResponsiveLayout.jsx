@@ -34,13 +34,7 @@ export default function MemberHeroResponsiveLayout(props) {
     },
     {
       overrides: {
-        ImageSlot: {
-          direction: "row",
-          width: "350px",
-          shrink: "1",
-          grow: "1",
-          basis: "0",
-        },
+        ImageSlot: { direction: "row", width: "350px" },
         Name: { fontSize: "28px" },
         Sponsor: {},
         Summary: { fontSize: "14px" },
@@ -50,12 +44,8 @@ export default function MemberHeroResponsiveLayout(props) {
         Date: { fontSize: "14px", letterSpacing: "0px" },
         Frame: {},
         HeroMessage: { padding: "10px 0px 10px 0px" },
-        Left: { shrink: "0" },
-        MemberHeroResponsiveLayout: {
-          direction: "column",
-          width: "unset",
-          height: "880px",
-        },
+        Left: { shrink: "0", padding: "20px 20px 20px 20px" },
+        MemberHeroResponsiveLayout: { direction: "column", width: "350px" },
       },
       variantValues: { breakpoint: "medium" },
     },
@@ -119,6 +109,7 @@ export default function MemberHeroResponsiveLayout(props) {
         padding="50px 50px 50px 50px"
         backgroundColor="rgba(255,255,255,1)"
         display="flex"
+        className="member-hero-text"
         {...getOverrideProps(overrides, "Left")}
       >
         <Flex

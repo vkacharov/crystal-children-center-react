@@ -31,6 +31,7 @@ export declare type UpdateResponsiveCardProps = React.PropsWithChildren<Partial<
     imageSlot?: React.ReactNode;
     onEditIconClick?: (event: SyntheticEvent) => void;
     onDeleteIconClick?: (event: SyntheticEvent) => void;
+    isAdmin?: Boolean;
 } & {
     breakpoint?: "large" | "medium";
 } & {
