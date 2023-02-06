@@ -41,7 +41,7 @@ export declare type MemberSummaryPostProps = React.PropsWithChildren<Partial<Fle
     onDeleteIconClick?: (event: SyntheticEvent) => void;
     isAdmin?: Boolean;
 } & {
-    breakpoint?: "large" | "medium" | "small";
+    breakpoint?: "base" | "large" | "medium" | "small";
 } & {
     overrides?: MemberSummaryPostOverridesProps | undefined | null;
 }>;

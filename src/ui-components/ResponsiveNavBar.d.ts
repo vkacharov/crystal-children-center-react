@@ -28,7 +28,7 @@ export declare type ResponsiveNavBarOverridesProps = {
 export declare type ResponsiveNavBarProps = React.PropsWithChildren<Partial<FlexProps> & {
     onSignOutClick?: (event: SyntheticEvent) => void;
 } & {
-    breakpoint?: "large" | "medium" | "small";
+    breakpoint?: "base" | "large" | "medium" | "small";
 } & {
     overrides?: ResponsiveNavBarOverridesProps | undefined | null;
 }>;

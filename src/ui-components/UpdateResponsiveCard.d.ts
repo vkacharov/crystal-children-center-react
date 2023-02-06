@@ -33,7 +33,7 @@ export declare type UpdateResponsiveCardProps = React.PropsWithChildren<Partial<
     onDeleteIconClick?: (event: SyntheticEvent) => void;
     isAdmin?: Boolean;
 } & {
-    breakpoint?: "large" | "medium";
+    breakpoint?: "base" | "large" | "medium";
 } & {
     overrides?: UpdateResponsiveCardOverridesProps | undefined | null;
 }>;

@@ -27,7 +27,7 @@ export declare type MemberHeroResponsiveLayoutProps = React.PropsWithChildren<Pa
     member?: Member;
     imageSlot?: React.ReactNode;
 } & {
-    breakpoint?: "large" | "medium";
+    breakpoint?: "base" | "large" | "medium";
 } & {
     overrides?: MemberHeroResponsiveLayoutOverridesProps | undefined | null;
 }>;

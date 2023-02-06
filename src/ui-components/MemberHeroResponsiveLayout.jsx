@@ -49,9 +49,26 @@ export default function MemberHeroResponsiveLayout(props) {
       },
       variantValues: { breakpoint: "medium" },
     },
+    {
+      overrides: {
+        ImageSlot: { direction: "row", width: "275px" },
+        Name: { fontSize: "28px" },
+        Sponsor: {},
+        Summary: { fontSize: "14px" },
+        Bio: { fontSize: "14px", letterSpacing: "0px" },
+        Message: {},
+        Age: { fontSize: "14px", letterSpacing: "0px" },
+        Date: { fontSize: "14px", letterSpacing: "0px" },
+        Frame: {},
+        HeroMessage: { padding: "10px 0px 10px 0px" },
+        Left: { shrink: "0", padding: "20px 20px 20px 20px" },
+        MemberHeroResponsiveLayout: { direction: "column", width: "275px" },
+      },
+      variantValues: { breakpoint: "base" },
+    },
   ];
   const breakpointHook = useBreakpointValue({
-    base: "medium",
+    base: "base",
     medium: "medium",
     large: "large",
   });

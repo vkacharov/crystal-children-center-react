@@ -82,9 +82,32 @@ export default function ResponsiveNavBar(props) {
       },
       variantValues: { breakpoint: "large" },
     },
+    {
+      overrides: {
+        "Logo_text_white 1": { width: "45px", height: "45px", shrink: "0" },
+        Logo: { width: "45px", height: "45px" },
+        Divider37852694: { height: "24px" },
+        Home: { fontSize: "18px", letterSpacing: "0.03px" },
+        HomeFrame: {},
+        Navigation: { gap: "10px" },
+        Divider37852696: { height: "24px" },
+        visit: { display: "block", children: "v" },
+        VisitFrame: {},
+        Divider37782775: {},
+        signout: { fontSize: "18px", lineHeight: "21.784090042114258px" },
+        SignoutFrame: {},
+        "Frame 321": {},
+        ResponsiveNavBar: {
+          gap: "18px",
+          width: "unset",
+          padding: "6px 18px 6px 18px",
+        },
+      },
+      variantValues: { breakpoint: "base" },
+    },
   ];
   const breakpointHook = useBreakpointValue({
-    base: "small",
+    base: "base",
     small: "small",
     medium: "medium",
     large: "large",
@@ -97,6 +120,7 @@ export default function ResponsiveNavBar(props) {
     }),
     overridesProp || {}
   );
+  const logoOnClick = useNavigateAction({ type: "url", url: "/" });
   const homeFrameOnClick = useNavigateAction({ type: "url", url: "/" });
   return (
     <Flex
@@ -141,6 +165,9 @@ export default function ResponsiveNavBar(props) {
           backgroundColor="rgba(255,255,255,1)"
           display="flex"
           className="action-link"
+          onClick={() => {
+            logoOnClick();
+          }}
           {...getOverrideProps(overrides, "Logo")}
         >
           <Image

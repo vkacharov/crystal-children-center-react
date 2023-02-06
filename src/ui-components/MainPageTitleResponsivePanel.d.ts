@@ -19,7 +19,7 @@ export declare type MainPageTitleResponsivePanelOverridesProps = {
     Lede?: PrimitiveOverrideProps<TextProps>;
 } & EscapeHatchProps;
 export declare type MainPageTitleResponsivePanelProps = React.PropsWithChildren<Partial<ViewProps> & {
-    breakpoint?: "large" | "medium" | "small";
+    breakpoint?: "base" | "large" | "medium" | "small";
 } & {
     overrides?: MainPageTitleResponsivePanelOverridesProps | undefined | null;
 }>;

@@ -79,9 +79,32 @@ export default function MainPageTitleResponsivePanel(props) {
       },
       variantValues: { breakpoint: "small" },
     },
+    {
+      overrides: {
+        image: { height: "99.46%", top: "0.09%", bottom: "0.45%" },
+        Mission: { fontSize: "14px", display: "none", children: "CCC" },
+        Name: { fontSize: "16px" },
+        Lede: {
+          fontSize: "16px",
+          display: "none",
+          letterSpacing: "0.01px",
+          children: "CCC",
+        },
+        "Body Area": {},
+        "Type Lock Up": {},
+        HeroLayout3: {
+          width: "275px",
+          height: "157px",
+          top: "calc(50% - 78.5px - 0.36px)",
+          padding: "10px 10px 10px 10px",
+        },
+        MainPageTitleResponsivePanel: { width: "275px", height: "158px" },
+      },
+      variantValues: { breakpoint: "base" },
+    },
   ];
   const breakpointHook = useBreakpointValue({
-    base: "small",
+    base: "base",
     small: "small",
     medium: "medium",
     large: "large",

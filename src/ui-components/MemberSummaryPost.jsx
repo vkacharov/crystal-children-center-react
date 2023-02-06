@@ -82,6 +82,35 @@ export default function MemberSummaryPost(props) {
     },
     {
       overrides: {
+        ImageSlot: { width: "220px" },
+        Name: {},
+        EditIcon: {},
+        EditIconFrame: {},
+        DeleteIcon: {},
+        DeleteIconFrame: {},
+        "Frame 419": { display: "none" },
+        Frame36792698: {},
+        Sponsor: {},
+        Frame36692723: {},
+        Headline: {},
+        Summary: {},
+        Article: {},
+        MyIcon: {},
+        ReadMore: {},
+        "Read more": {},
+        Text: { shrink: "0", alignSelf: "stretch" },
+        Body: {
+          direction: "column",
+          width: "unset",
+          alignItems: "center",
+          alignSelf: "stretch",
+        },
+        MemberSummaryPost: { width: "275px" },
+      },
+      variantValues: { breakpoint: "base" },
+    },
+    {
+      overrides: {
         ImageSlot: {},
         Name: {},
         EditIcon: {},
@@ -106,7 +135,7 @@ export default function MemberSummaryPost(props) {
     },
   ];
   const breakpointHook = useBreakpointValue({
-    base: "small",
+    base: "base",
     small: "small",
     medium: "medium",
     large: "large",

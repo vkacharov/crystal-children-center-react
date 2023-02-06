@@ -74,9 +74,35 @@ export default function UpdateResponsiveCard(props) {
       },
       variantValues: { breakpoint: "medium" },
     },
+    {
+      overrides: {
+        imageSlot: { direction: "row", width: "275px" },
+        Date: {},
+        EditIcon: {},
+        EditIconFrame: {},
+        DeleteIcon: {},
+        DeleteIconFrame: {},
+        "Frame 459": { display: "none" },
+        Title: {},
+        Divider: {},
+        Summary: {},
+        Features: {},
+        "Card Area": {
+          shrink: "0",
+          padding: "16px 16px 16px 16px",
+          alignSelf: "stretch",
+        },
+        UpdateResponsiveCard: {
+          direction: "column",
+          width: "275px",
+          justifyContent: "center",
+        },
+      },
+      variantValues: { breakpoint: "base" },
+    },
   ];
   const breakpointHook = useBreakpointValue({
-    base: "medium",
+    base: "base",
     medium: "medium",
     large: "large",
   });
