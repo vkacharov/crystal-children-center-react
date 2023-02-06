@@ -99,7 +99,7 @@ export default function ResponsiveNavBar(props) {
         "Frame 321": {},
         ResponsiveNavBar: {
           gap: "18px",
-          width: "unset",
+          width: "300px",
           padding: "6px 18px 6px 18px",
         },
       },

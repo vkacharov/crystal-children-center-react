@@ -76,7 +76,7 @@ export default function UpdateResponsiveCard(props) {
     },
     {
       overrides: {
-        imageSlot: { direction: "row", width: "275px" },
+        imageSlot: { direction: "row", width: "300px" },
         Date: {},
         EditIcon: {},
         EditIconFrame: {},
@@ -89,12 +89,12 @@ export default function UpdateResponsiveCard(props) {
         Features: {},
         "Card Area": {
           shrink: "0",
-          padding: "16px 16px 16px 16px",
+          padding: "16px 12px 16px 12px",
           alignSelf: "stretch",
         },
         UpdateResponsiveCard: {
           direction: "column",
-          width: "275px",
+          width: "300px",
           justifyContent: "center",
         },
       },

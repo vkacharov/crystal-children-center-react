@@ -81,7 +81,7 @@ export default function MainPageTitleResponsivePanel(props) {
     },
     {
       overrides: {
-        image: { height: "99.46%", top: "0.09%", bottom: "0.45%" },
+        image: { height: "98.52%", top: "0.66%", bottom: "0.81%" },
         Mission: { fontSize: "14px", display: "none", children: "CCC" },
         Name: { fontSize: "16px" },
         Lede: {
@@ -93,12 +93,12 @@ export default function MainPageTitleResponsivePanel(props) {
         "Body Area": {},
         "Type Lock Up": {},
         HeroLayout3: {
-          width: "275px",
-          height: "157px",
-          top: "calc(50% - 78.5px - 0.36px)",
+          width: "300px",
+          height: "173.4px",
+          top: "calc(50% - 86.7px - 0.3px)",
           padding: "10px 10px 10px 10px",
         },
-        MainPageTitleResponsivePanel: { width: "275px", height: "158px" },
+        MainPageTitleResponsivePanel: { width: "300px", height: "174px" },
       },
       variantValues: { breakpoint: "base" },
     },

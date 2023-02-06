@@ -53,7 +53,7 @@ export default function MemberSummaryPost(props) {
     },
     {
       overrides: {
-        ImageSlot: {},
+        ImageSlot: { width: "290px" },
         Name: {},
         EditIcon: {},
         EditIconFrame: {},
@@ -76,13 +76,13 @@ export default function MemberSummaryPost(props) {
           alignItems: "center",
           alignSelf: "stretch",
         },
-        MemberSummaryPost: { width: "330px" },
+        MemberSummaryPost: { width: "330px", padding: "18px 18px 18px 18px" },
       },
       variantValues: { breakpoint: "small" },
     },
     {
       overrides: {
-        ImageSlot: { width: "220px" },
+        ImageSlot: { width: "275px" },
         Name: {},
         EditIcon: {},
         EditIconFrame: {},
@@ -105,7 +105,7 @@ export default function MemberSummaryPost(props) {
           alignItems: "center",
           alignSelf: "stretch",
         },
-        MemberSummaryPost: { width: "275px" },
+        MemberSummaryPost: { width: "300px", padding: "12px 12px 12px 12px" },
       },
       variantValues: { breakpoint: "base" },
     },

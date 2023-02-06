@@ -68,6 +68,12 @@
   cursor: pointer !important;
 }
 
+.action-link > p {
+  -webkit-user-select: none !important;
+  -ms-user-select: none !important;
+  user-select: none !important;
+}
+
 .page-header {
   border-color: rgb(13, 26, 38) !important;
   border-bottom: 1px solid !important;
