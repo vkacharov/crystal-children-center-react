@@ -256,6 +256,7 @@ export default function MemberSummaryPost(props) {
                   shrink="0"
                   position="relative"
                   padding="0px 0px 0px 0px"
+                  className="action-link"
                   onClick={onEditIconClick}
                   {...getOverrideProps(overrides, "EditIconFrame")}
                 >
@@ -285,6 +286,7 @@ export default function MemberSummaryPost(props) {
                   shrink="0"
                   position="relative"
                   padding="0px 0px 0px 0px"
+                  className="action-link"
                   onClick={onDeleteIconClick}
                   {...getOverrideProps(overrides, "DeleteIconFrame")}
                 >
@@ -393,6 +395,7 @@ export default function MemberSummaryPost(props) {
             position="relative"
             padding="0px 0px 0px 0px"
             display="flex"
+            className="action-link"
             onClick={() => {
               readmoreOnClick();
             }}

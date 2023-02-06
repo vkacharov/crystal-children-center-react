@@ -64,6 +64,18 @@
     border-color: rgb(13, 26, 38);
 }
 
+.action-link {
+  cursor: pointer !important;
+}
+
+.page-header {
+  border-color: rgb(13, 26, 38) !important;
+  border-bottom: 1px solid !important;
+  position: sticky !important;
+  top: 0px !important;
+  z-index: 1000 !important;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

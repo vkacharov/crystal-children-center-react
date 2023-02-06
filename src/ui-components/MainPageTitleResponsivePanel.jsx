@@ -12,7 +12,6 @@ import {
   mergeVariantsAndOverrides,
 } from "@aws-amplify/ui-react/internal";
 import {
-  Button,
   Flex,
   Image,
   Text,
@@ -29,7 +28,6 @@ export default function MainPageTitleResponsivePanel(props) {
         Name: {},
         Lede: {},
         "Body Area": {},
-        Button: {},
         "Type Lock Up": {},
         HeroLayout3: {},
         MainPageTitleResponsivePanel: {},
@@ -48,7 +46,6 @@ export default function MainPageTitleResponsivePanel(props) {
           justifyContent: "center",
           alignItems: "center",
         },
-        Button: {},
         "Type Lock Up": { gap: "21px" },
         HeroLayout3: {
           width: "750px",
@@ -61,19 +58,24 @@ export default function MainPageTitleResponsivePanel(props) {
     },
     {
       overrides: {
-        image: {},
-        Mission: { display: "none" },
-        Name: { fontSize: "28px" },
-        Lede: { display: "none" },
+        image: { height: "99.5%", top: "0.28%", bottom: "0.21%" },
+        Mission: { fontSize: "14px", display: "none", children: "CCC" },
+        Name: { fontSize: "24px" },
+        Lede: {
+          fontSize: "16px",
+          display: "none",
+          letterSpacing: "0.01px",
+          children: "CCC",
+        },
         "Body Area": {},
-        Button: {},
         "Type Lock Up": {},
         HeroLayout3: {
-          width: "450px",
-          height: "257.14px",
+          width: "350px",
+          height: "200px",
+          top: "calc(50% - 100px - -0.07px)",
           padding: "10px 10px 10px 10px",
         },
-        MainPageTitleResponsivePanel: { width: "450px", height: "257.14px" },
+        MainPageTitleResponsivePanel: { width: "350px", height: "201px" },
       },
       variantValues: { breakpoint: "small" },
     },
@@ -240,15 +242,6 @@ export default function MainPageTitleResponsivePanel(props) {
               {...getOverrideProps(overrides, "Lede")}
             ></Text>
           </Flex>
-          <Button
-            display="none"
-            shrink="0"
-            size="large"
-            isDisabled={false}
-            variation="primary"
-            children="Meet Our Children"
-            {...getOverrideProps(overrides, "Button")}
-          ></Button>
         </Flex>
       </Flex>
     </View>

@@ -6,7 +6,7 @@
 
 import * as React from "react";
 import { EscapeHatchProps } from "@aws-amplify/ui-react/internal";
-import { ButtonProps, FlexProps, ImageProps, TextProps, ViewProps } from "@aws-amplify/ui-react";
+import { FlexProps, ImageProps, TextProps, ViewProps } from "@aws-amplify/ui-react";
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
 export declare type MainPageTitleResponsivePanelOverridesProps = {
     MainPageTitleResponsivePanel?: PrimitiveOverrideProps<ViewProps>;
@@ -17,7 +17,6 @@ export declare type MainPageTitleResponsivePanelOverridesProps = {
     "Body Area"?: PrimitiveOverrideProps<FlexProps>;
     Name?: PrimitiveOverrideProps<TextProps>;
     Lede?: PrimitiveOverrideProps<TextProps>;
-    Button?: PrimitiveOverrideProps<ButtonProps>;
 } & EscapeHatchProps;
 export declare type MainPageTitleResponsivePanelProps = React.PropsWithChildren<Partial<ViewProps> & {
     breakpoint?: "large" | "medium" | "small";
