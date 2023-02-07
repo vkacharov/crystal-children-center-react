@@ -21,6 +21,12 @@
       },
       "api": {
         "CrystalChildrenCenter": {}
+      },
+      "hosting": {
+        "amplifyhosting": {
+          "appId": "d1837mei2p690k",
+          "type": "manual"
+        }
       }
     }
   }
