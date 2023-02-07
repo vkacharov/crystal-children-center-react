@@ -183,7 +183,7 @@ export default function MainPageTitleResponsivePanel(props) {
         >
           <Text
             fontFamily="Inter"
-            fontSize="16px"
+            fontSize="20px"
             fontWeight="700"
             color="rgba(255,255,255,1)"
             fontStyle="italic"
@@ -220,7 +220,7 @@ export default function MainPageTitleResponsivePanel(props) {
           >
             <Text
               fontFamily="Inter"
-              fontSize="42px"
+              fontSize="44px"
               fontWeight="600"
               color="rgba(255,255,255,1)"
               lineHeight="30px"
@@ -242,7 +242,7 @@ export default function MainPageTitleResponsivePanel(props) {
             ></Text>
             <Text
               fontFamily="Inter"
-              fontSize="18px"
+              fontSize="20px"
               fontWeight="400"
               color="rgba(255,255,255,1)"
               fontStyle="italic"
@@ -251,7 +251,7 @@ export default function MainPageTitleResponsivePanel(props) {
               display="block"
               direction="column"
               justifyContent="unset"
-              letterSpacing="0.03px"
+              letterSpacing="0.05px"
               width="unset"
               height="unset"
               gap="unset"

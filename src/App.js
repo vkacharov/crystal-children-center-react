@@ -4,9 +4,8 @@ import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import Home from "./pages/Home";
 import Layout from "./pages/Layout";
 import MemberView from "./pages/MemberView";
-import { withAuthenticator, Button } from '@aws-amplify/ui-react';
+import { withAuthenticator } from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css';
-import { ResponsiveNavBar } from './ui-components';
 
 function App({ signOut, user }) {
   let isAdmin = false;
@@ -18,10 +17,8 @@ function App({ signOut, user }) {
   return (
     <div className="main-content">
       <BrowserRouter>
-        
-        <ResponsiveNavBar onSignOutClick={signOut}/>
         <Routes>
-          <Route path="/" element={<Layout />}>
+          <Route path="/" element={<Layout onSignOut={signOut}/>}>
             <Route index element={<Home isAdmin={isAdmin}/>}/>
             <Route path="/member/:id" element = {<MemberView isAdmin={isAdmin} />} />
           </Route>

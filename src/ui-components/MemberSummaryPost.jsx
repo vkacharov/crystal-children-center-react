@@ -466,6 +466,7 @@ export default function MemberSummaryPost(props) {
               position="relative"
               padding="0px 0px 0px 0px"
               whiteSpace="pre-wrap"
+              unselectable={true}
               children="Read more"
               {...getOverrideProps(overrides, "ReadMore")}
             ></Text>

@@ -231,6 +231,7 @@ export default function ResponsiveNavBar(props) {
             position="relative"
             padding="0px 0px 0px 0px"
             whiteSpace="pre-wrap"
+            unselectable={true}
             children="Home"
             {...getOverrideProps(overrides, "Home")}
           ></Text>
@@ -336,6 +337,7 @@ export default function ResponsiveNavBar(props) {
             position="relative"
             padding="0px 0px 0px 0px"
             whiteSpace="pre-wrap"
+            unselectable={true}
             children="Sign out"
             {...getOverrideProps(overrides, "signout")}
           ></Text>

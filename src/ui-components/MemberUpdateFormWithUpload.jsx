@@ -223,7 +223,7 @@ export default function MemberUpdateFormWithUpload(props) {
         {...getOverrideProps(overrides, "age")}
       ></TextField>
       <TextField
-        label="Date"
+        label="Date joined"
         isRequired={false}
         isReadOnly={false}
         type="date"
