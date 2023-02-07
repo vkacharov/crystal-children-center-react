@@ -237,7 +237,7 @@ export default function MainPageTitleResponsivePanel(props) {
               position="relative"
               padding="0px 0px 0px 0px"
               whiteSpace="pre-wrap"
-              children="Crystal Children’s Center"
+              children="Chrystal Children’s Center"
               {...getOverrideProps(overrides, "Name")}
             ></Text>
             <Text
