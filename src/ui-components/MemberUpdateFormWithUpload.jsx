@@ -5,7 +5,7 @@
  */
 /* eslint-disable */
 import * as React from "react";
-import { Button, Flex, Grid, TextField } from "@aws-amplify/ui-react";
+import { Button, Flex, Grid, TextField, TextAreaField, } from "@aws-amplify/ui-react";
 import { getOverrideProps } from "@aws-amplify/ui-react/internal";
 import { Member } from "../models";
 import { fetchByPath, validateField } from "./utils";
@@ -93,7 +93,7 @@ export default function MemberUpdateFormWithUpload(props) {
   return (
     <Grid
       as="form"
-      rowGap="15px"
+      rowGap="10px"
       columnGap="15px"
       padding="20px"
       onSubmit={async (event) => {
@@ -253,7 +253,7 @@ export default function MemberUpdateFormWithUpload(props) {
         hasError={errors.date?.hasError}
         {...getOverrideProps(overrides, "date")}
       ></TextField>
-      <TextField
+      <TextAreaField
         label="Bio"
         isRequired={false}
         isReadOnly={false}
@@ -282,8 +282,8 @@ export default function MemberUpdateFormWithUpload(props) {
         errorMessage={errors.bio?.errorMessage}
         hasError={errors.bio?.hasError}
         {...getOverrideProps(overrides, "bio")}
-      ></TextField>
-      <TextField
+      ></TextAreaField>
+      <TextAreaField
         label="Summary"
         isRequired={false}
         isReadOnly={false}
@@ -312,7 +312,7 @@ export default function MemberUpdateFormWithUpload(props) {
         errorMessage={errors.summary?.errorMessage}
         hasError={errors.summary?.hasError}
         {...getOverrideProps(overrides, "summary")}
-      ></TextField>
+      ></TextAreaField>
       <TextField
         label="Picture"
         type="file"
@@ -383,11 +383,14 @@ export default function MemberUpdateFormWithUpload(props) {
         {...getOverrideProps(overrides, "CTAFlex")}
       >
         <Button
-          children="Reset"
+          children="Cancel"
           type="reset"
           onClick={(event) => {
             event.preventDefault();
             resetStateValues();
+            if (rest['onCancel']) {
+              rest['onCancel']();
+            }
           }}
           isDisabled={!(idProp || member)}
           {...getOverrideProps(overrides, "ResetButton")}

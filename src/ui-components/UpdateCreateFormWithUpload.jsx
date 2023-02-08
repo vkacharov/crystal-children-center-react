@@ -162,6 +162,7 @@ export default function UpdateCreateFormWithUpload(props) {
         {...getOverrideProps(overrides, "date")}
       ></TextField>
       <TextAreaField
+        value={summary}
         label="Summary"
         isRequired={false}
         isReadOnly={false}

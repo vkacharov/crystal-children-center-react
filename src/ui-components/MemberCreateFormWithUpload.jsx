@@ -246,6 +246,7 @@ export default function MemberCreateFormWithUpload(props) {
         {...getOverrideProps(overrides, "date")}
       ></TextField>
       <TextAreaField
+        value={summary}
         label="Summary"
         isRequired={false}
         isReadOnly={false}
@@ -276,6 +277,7 @@ export default function MemberCreateFormWithUpload(props) {
       ></TextAreaField>
       <TextAreaField
         label="Bio"
+        value={bio}
         isRequired={false}
         isReadOnly={false}
         onChange={(e) => {

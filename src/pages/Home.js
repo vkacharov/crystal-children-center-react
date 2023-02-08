@@ -67,26 +67,49 @@ import 'react-confirm-alert/src/react-confirm-alert.css';
               })}
 
               templateColumns = {{large: "1fr 1fr", medium: "1fr"}}
-              width={{large: "1260px", medium: "480px"}}
+             
             />
             {isAdmin &&
               <>
                  <div className='section-title'>
                   <h3>Create a Member</h3>
                 </div>
-                <MemberCreateFormWithUpload clearOnSuccess={true}/>
+                <MemberCreateFormWithUpload 
+                  clearOnSuccess={true}
+                  onError = {(fields, message) => {
+                      console.error('Failed to create a Member', message);
+                    }
+                  }
+                  />
               </>
             }
           </header>
 
           <Modal
+            style = {{
+              content: {
+                width: "50vw"
+              },
+            }}
             isOpen={modalIsOpen}
             contentLabel="Member Modal"
           >
-            <MemberUpdateFormWithUpload id={selectedMember} clearOnSuccess={true}
+            <MemberUpdateFormWithUpload id={selectedMember}
               onSuccess = {() => {
                 setModalIsOpen(false);
               }}
+
+              onError = {(fields, message) => {
+                  console.error('Failed to update a Member', message);
+                  setModalIsOpen(false);
+                }
+              }
+
+              onCancel = {() => {
+                  setModalIsOpen(false);
+                }
+              }
+
             />
           </Modal>
         </div>

@@ -91,16 +91,26 @@ import 'react-confirm-alert/src/react-confirm-alert.css';
       }
 
           <Modal
+            style = {{
+              content: {
+                width: "50vw"
+              },
+            }}
             isOpen={modalIsOpen}
             contentLabel="Update Modal"
           >
-            <UpdateUpdateFormWithUpload 
+            <UpdateUpdateFormWithUpload
               clearOnSuccess={true}
               id = {selectedUpdate}
               memberid={id}
               onSuccess = {() => {
                 setModalIsOpen(false);
               }}
+
+              onCancel = {() => {
+                  setModalIsOpen(false);
+                }
+              }
             />
           </Modal>
       </div>

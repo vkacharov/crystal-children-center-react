@@ -122,6 +122,11 @@ export default function ResponsiveNavBar(props) {
   );
   const logoOnClick = useNavigateAction({ type: "url", url: "/" });
   const homeFrameOnClick = useNavigateAction({ type: "url", url: "/" });
+  const visitFrameOnClick = useNavigateAction({
+    target: "_blank",
+    type: "url",
+    url: "https://www.chrystalchildrenscenter.com/",
+  });
   return (
     <Flex
       gap="20px"
@@ -231,7 +236,6 @@ export default function ResponsiveNavBar(props) {
             position="relative"
             padding="0px 0px 0px 0px"
             whiteSpace="pre-wrap"
-            unselectable={true}
             children="Home"
             {...getOverrideProps(overrides, "Home")}
           ></Text>
@@ -271,6 +275,9 @@ export default function ResponsiveNavBar(props) {
           padding="0px 0px 0px 0px"
           display="none"
           className="action-link"
+          onClick={() => {
+            visitFrameOnClick();
+          }}
           {...getOverrideProps(overrides, "VisitFrame")}
         >
           <Text
@@ -337,7 +344,6 @@ export default function ResponsiveNavBar(props) {
             position="relative"
             padding="0px 0px 0px 0px"
             whiteSpace="pre-wrap"
-            unselectable={true}
             children="Sign out"
             {...getOverrideProps(overrides, "signout")}
           ></Text>
