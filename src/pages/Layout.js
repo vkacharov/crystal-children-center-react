@@ -6,7 +6,7 @@ function Layout({onSignOut}) {
         <>
             <ResponsiveNavBar onSignOutClick={onSignOut}/>
             <Outlet />
-            <div class="page-footer">Copyright © 2023 Saint Olive Tree</div>
+            <div className="page-footer">Copyright © 2023 Saint Olive Tree</div>
         </>
     );
 }
