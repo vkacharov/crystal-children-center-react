@@ -37,6 +37,9 @@ export default function UpdateResponsiveCardCollection(props) {
   return (
     <Collection
       type="list"
+      isPaginated={true}
+      searchPlaceholder="Search..."
+      itemsPerPage={8}
       direction="column"
       justifyContent="left"
       items={items || []}

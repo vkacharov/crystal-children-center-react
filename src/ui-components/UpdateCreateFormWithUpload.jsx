@@ -135,7 +135,7 @@ export default function UpdateCreateFormWithUpload(props) {
       {...rest}
     >
       <TextField
-        label="Date joined"
+        label="Udate date"
         isRequired={false}
         isReadOnly={false}
         type="date"
