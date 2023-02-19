@@ -183,7 +183,7 @@ export default function MemberHeroResponsiveLayout(props) {
             position="relative"
             padding="0px 0px 0px 0px"
             whiteSpace="pre-wrap"
-            children="Angel Family: The Adams Family"
+            children={`${"Angel family: "}${member?.sponsor}`}
             {...getOverrideProps(overrides, "Sponsor")}
           ></Text>
           <Flex

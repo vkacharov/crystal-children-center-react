@@ -49,10 +49,10 @@ export default function MainPageTitleResponsivePanel(props) {
         "Type Lock Up": { gap: "21px" },
         HeroLayout3: {
           width: "750px",
-          height: "428.57px",
+          height: "400px",
           padding: "48px 72px 48px 72px",
         },
-        MainPageTitleResponsivePanel: { width: "750px", height: "428.57px" },
+        MainPageTitleResponsivePanel: { width: "750px", height: "400px" },
       },
       variantValues: { breakpoint: "medium" },
     },
@@ -120,7 +120,7 @@ export default function MainPageTitleResponsivePanel(props) {
   return (
     <View
       width="1260px"
-      height="720px"
+      height="650px"
       display="block"
       gap="unset"
       alignItems="unset"
@@ -151,7 +151,7 @@ export default function MainPageTitleResponsivePanel(props) {
         gap="10px"
         direction="column"
         width="1260px"
-        height="720px"
+        height="650px"
         justifyContent="center"
         alignItems="center"
         overflow="hidden"
