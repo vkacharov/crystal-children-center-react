@@ -371,7 +371,7 @@ export default function MemberSummaryPost(props) {
                 position="relative"
                 padding="0px 0px 0px 0px"
                 whiteSpace="pre-wrap"
-                children={`${"Angel family: "}${member?.sponsor}`}
+                children={`${"Angel Family: "}${member?.sponsor}`}
                 {...getOverrideProps(overrides, "Sponsor")}
               ></Text>
             </Flex>
@@ -411,7 +411,7 @@ export default function MemberSummaryPost(props) {
               position="relative"
               padding="0px 0px 0px 0px"
               whiteSpace="pre-wrap"
-              children={member?.summary}
+              children={member?.bio}
               {...getOverrideProps(overrides, "Summary")}
             ></Text>
           </Flex>
