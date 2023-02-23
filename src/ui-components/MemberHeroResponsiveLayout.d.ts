@@ -26,6 +26,7 @@ export declare type MemberHeroResponsiveLayoutOverridesProps = {
 export declare type MemberHeroResponsiveLayoutProps = React.PropsWithChildren<Partial<FlexProps> & {
     member?: Member;
     imageSlot?: React.ReactNode;
+    gender?: String;
 } & {
     breakpoint?: "base" | "large" | "medium";
 } & {

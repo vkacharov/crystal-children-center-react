@@ -21,7 +21,7 @@ import 'react-confirm-alert/src/react-confirm-alert.css';
         .then(result => {
           setMember(result)
         })
-    }, []);
+    }, [id]);
 
     const [selectedUpdate, setSelectedUpdate] = useState();
     const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -62,10 +62,12 @@ import 'react-confirm-alert/src/react-confirm-alert.css';
 
     return (
       <div className="member">
-        <MemberHeroResponsiveLayout member = {member}
+        <MemberHeroResponsiveLayout 
+          member = {member}
           imageSlot = {
             <S3Image imgKey={member.pictureUrl} imgPrefix={id}/>
           }
+          gender = {member.gender?.toLowerCase()}
         />
         <div className="section-title">
           <h2>Updates about {member.name}</h2>

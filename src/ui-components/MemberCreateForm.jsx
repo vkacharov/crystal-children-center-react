@@ -10,6 +10,7 @@ import {
   Button,
   Flex,
   Grid,
+  SelectField,
   TextAreaField,
   TextField,
 } from "@aws-amplify/ui-react";
@@ -32,37 +33,41 @@ export default function MemberCreateForm(props) {
     name: "",
     age: "",
     date: "",
+    gender: undefined,
+    pictureUrl: "",
     summary: "",
     bio: "",
     sponsor: "",
-    pictureUrl: "",
   };
   const [name, setName] = React.useState(initialValues.name);
   const [age, setAge] = React.useState(initialValues.age);
   const [date, setDate] = React.useState(initialValues.date);
+  const [gender, setGender] = React.useState(initialValues.gender);
+  const [pictureUrl, setPictureUrl] = React.useState(initialValues.pictureUrl);
   const [summary, setSummary] = React.useState(initialValues.summary);
   const [bio, setBio] = React.useState(initialValues.bio);
   const [sponsor, setSponsor] = React.useState(initialValues.sponsor);
-  const [pictureUrl, setPictureUrl] = React.useState(initialValues.pictureUrl);
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
     setName(initialValues.name);
     setAge(initialValues.age);
     setDate(initialValues.date);
+    setGender(initialValues.gender);
+    setPictureUrl(initialValues.pictureUrl);
     setSummary(initialValues.summary);
     setBio(initialValues.bio);
     setSponsor(initialValues.sponsor);
-    setPictureUrl(initialValues.pictureUrl);
     setErrors({});
   };
   const validations = {
-    name: [],
+    name: [{ type: "Required" }],
     age: [],
     date: [],
+    gender: [],
+    pictureUrl: [{ type: "Required" }],
     summary: [],
     bio: [],
     sponsor: [],
-    pictureUrl: [{ type: "Required" }],
   };
   const runValidationTasks = async (
     fieldName,
@@ -92,10 +97,11 @@ export default function MemberCreateForm(props) {
           name,
           age,
           date,
+          gender,
+          pictureUrl,
           summary,
           bio,
           sponsor,
-          pictureUrl,
         };
         const validationResponses = await Promise.all(
           Object.keys(validations).reduce((promises, fieldName) => {
@@ -143,7 +149,7 @@ export default function MemberCreateForm(props) {
     >
       <TextField
         label="Name"
-        isRequired={false}
+        isRequired={true}
         isReadOnly={false}
         value={name}
         onChange={(e) => {
@@ -153,10 +159,11 @@ export default function MemberCreateForm(props) {
               name: value,
               age,
               date,
+              gender,
+              pictureUrl,
               summary,
               bio,
               sponsor,
-              pictureUrl,
             };
             const result = onChange(modelFields);
             value = result?.name ?? value;
@@ -187,10 +194,11 @@ export default function MemberCreateForm(props) {
               name,
               age: value,
               date,
+              gender,
+              pictureUrl,
               summary,
               bio,
               sponsor,
-              pictureUrl,
             };
             const result = onChange(modelFields);
             value = result?.age ?? value;
@@ -218,10 +226,11 @@ export default function MemberCreateForm(props) {
               name,
               age,
               date: value,
+              gender,
+              pictureUrl,
               summary,
               bio,
               sponsor,
-              pictureUrl,
             };
             const result = onChange(modelFields);
             value = result?.date ?? value;
@@ -236,6 +245,79 @@ export default function MemberCreateForm(props) {
         hasError={errors.date?.hasError}
         {...getOverrideProps(overrides, "date")}
       ></TextField>
+      <SelectField
+        label="Gender"
+        placeholder="Please select an option"
+        isDisabled={false}
+        value={gender}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              name,
+              age,
+              date,
+              gender: value,
+              pictureUrl,
+              summary,
+              bio,
+              sponsor,
+            };
+            const result = onChange(modelFields);
+            value = result?.gender ?? value;
+          }
+          if (errors.gender?.hasError) {
+            runValidationTasks("gender", value);
+          }
+          setGender(value);
+        }}
+        onBlur={() => runValidationTasks("gender", gender)}
+        errorMessage={errors.gender?.errorMessage}
+        hasError={errors.gender?.hasError}
+        {...getOverrideProps(overrides, "gender")}
+      >
+        <option
+          children="Boy"
+          value="BOY"
+          {...getOverrideProps(overrides, "genderoption0")}
+        ></option>
+        <option
+          children="Girl"
+          value="GIRL"
+          {...getOverrideProps(overrides, "genderoption1")}
+        ></option>
+      </SelectField>
+      <TextField
+        label="Picture"
+        isRequired={true}
+        isReadOnly={false}
+        value={pictureUrl}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              name,
+              age,
+              date,
+              gender,
+              pictureUrl: value,
+              summary,
+              bio,
+              sponsor,
+            };
+            const result = onChange(modelFields);
+            value = result?.pictureUrl ?? value;
+          }
+          if (errors.pictureUrl?.hasError) {
+            runValidationTasks("pictureUrl", value);
+          }
+          setPictureUrl(value);
+        }}
+        onBlur={() => runValidationTasks("pictureUrl", pictureUrl)}
+        errorMessage={errors.pictureUrl?.errorMessage}
+        hasError={errors.pictureUrl?.hasError}
+        {...getOverrideProps(overrides, "pictureUrl")}
+      ></TextField>
       <TextAreaField
         label="Summary"
         isRequired={false}
@@ -247,10 +329,11 @@ export default function MemberCreateForm(props) {
               name,
               age,
               date,
+              gender,
+              pictureUrl,
               summary: value,
               bio,
               sponsor,
-              pictureUrl,
             };
             const result = onChange(modelFields);
             value = result?.summary ?? value;
@@ -276,10 +359,11 @@ export default function MemberCreateForm(props) {
               name,
               age,
               date,
+              gender,
+              pictureUrl,
               summary,
               bio: value,
               sponsor,
-              pictureUrl,
             };
             const result = onChange(modelFields);
             value = result?.bio ?? value;
@@ -306,10 +390,11 @@ export default function MemberCreateForm(props) {
               name,
               age,
               date,
+              gender,
+              pictureUrl,
               summary,
               bio,
               sponsor: value,
-              pictureUrl,
             };
             const result = onChange(modelFields);
             value = result?.sponsor ?? value;
@@ -323,36 +408,6 @@ export default function MemberCreateForm(props) {
         errorMessage={errors.sponsor?.errorMessage}
         hasError={errors.sponsor?.hasError}
         {...getOverrideProps(overrides, "sponsor")}
-      ></TextField>
-      <TextField
-        label="Picture"
-        isRequired={true}
-        isReadOnly={false}
-        value={pictureUrl}
-        onChange={(e) => {
-          let { value } = e.target;
-          if (onChange) {
-            const modelFields = {
-              name,
-              age,
-              date,
-              summary,
-              bio,
-              sponsor,
-              pictureUrl: value,
-            };
-            const result = onChange(modelFields);
-            value = result?.pictureUrl ?? value;
-          }
-          if (errors.pictureUrl?.hasError) {
-            runValidationTasks("pictureUrl", value);
-          }
-          setPictureUrl(value);
-        }}
-        onBlur={() => runValidationTasks("pictureUrl", pictureUrl)}
-        errorMessage={errors.pictureUrl?.errorMessage}
-        hasError={errors.pictureUrl?.hasError}
-        {...getOverrideProps(overrides, "pictureUrl")}
       ></TextField>
       <Flex
         justifyContent="space-between"

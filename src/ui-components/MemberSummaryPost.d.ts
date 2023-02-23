@@ -26,6 +26,8 @@ export declare type MemberSummaryPostOverridesProps = {
     DeleteIcon?: MyIconProps;
     Frame36692723?: PrimitiveOverrideProps<FlexProps>;
     Sponsor?: PrimitiveOverrideProps<TextProps>;
+    Frame38142701?: PrimitiveOverrideProps<FlexProps>;
+    Age?: PrimitiveOverrideProps<TextProps>;
     Article?: PrimitiveOverrideProps<FlexProps>;
     Summary?: PrimitiveOverrideProps<TextProps>;
     "Read more"?: PrimitiveOverrideProps<FlexProps>;
@@ -40,6 +42,7 @@ export declare type MemberSummaryPostProps = React.PropsWithChildren<Partial<Fle
     onPictureIconClick?: (event: SyntheticEvent) => void;
     onDeleteIconClick?: (event: SyntheticEvent) => void;
     isAdmin?: Boolean;
+    gender?: String;
 } & {
     breakpoint?: "base" | "large" | "medium" | "small";
 } & {

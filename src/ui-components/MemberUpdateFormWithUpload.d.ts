@@ -5,7 +5,7 @@
  */
 /* eslint-disable */
 import * as React from "react";
-import { GridProps, TextFieldProps } from "@aws-amplify/ui-react";
+import { GridProps, SelectFieldProps, TextFieldProps } from "@aws-amplify/ui-react";
 import { EscapeHatchProps } from "@aws-amplify/ui-react/internal";
 import { Member } from "../models";
 export declare type ValidationResponse = {
@@ -17,6 +17,7 @@ export declare type MemberUpdateFormInputValues = {
     name?: string;
     age?: number;
     date?: string;
+    gender?: string;
     bio?: string;
     summary?: string;
     pictureUrl?: string;
@@ -26,6 +27,7 @@ export declare type MemberUpdateFormValidationValues = {
     name?: ValidationFunction<string>;
     age?: ValidationFunction<number>;
     date?: ValidationFunction<string>;
+    gender?: ValidationFunction<string>;
     bio?: ValidationFunction<string>;
     summary?: ValidationFunction<string>;
     pictureUrl?: ValidationFunction<string>;
@@ -37,6 +39,7 @@ export declare type MemberUpdateFormOverridesProps = {
     name?: PrimitiveOverrideProps<TextFieldProps>;
     age?: PrimitiveOverrideProps<TextFieldProps>;
     date?: PrimitiveOverrideProps<TextFieldProps>;
+    gender?: PrimitiveOverrideProps<SelectFieldProps>;
     bio?: PrimitiveOverrideProps<TextFieldProps>;
     summary?: PrimitiveOverrideProps<TextFieldProps>;
     pictureUrl?: PrimitiveOverrideProps<TextFieldProps>;

@@ -2,7 +2,10 @@ import { ModelInit, MutableModel, __modelMeta__, ManagedIdentifier } from "@aws-
 // @ts-ignore
 import { LazyLoading, LazyLoadingDisabled, AsyncCollection } from "@aws-amplify/datastore";
 
-
+export enum Gender {
+  BOY = "BOY",
+  GIRL = "GIRL"
+}
 
 
 
@@ -54,6 +57,7 @@ type EagerMember = {
   readonly pictureUrl?: string | null;
   readonly Updates?: (Update | null)[] | null;
   readonly sponsor?: string | null;
+  readonly gender?: Gender | keyof typeof Gender | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
@@ -72,6 +76,7 @@ type LazyMember = {
   readonly pictureUrl?: string | null;
   readonly Updates: AsyncCollection<Update>;
   readonly sponsor?: string | null;
+  readonly gender?: Gender | keyof typeof Gender | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }

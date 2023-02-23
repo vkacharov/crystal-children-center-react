@@ -68,7 +68,7 @@ export default function MainPageTitleResponsivePanel(props) {
           children: "CCC",
         },
         "Body Area": {},
-        "Type Lock Up": {},
+        "Type Lock Up": { gap: "24px" },
         HeroLayout3: {
           width: "350px",
           height: "200px",
@@ -91,7 +91,7 @@ export default function MainPageTitleResponsivePanel(props) {
           children: "CCC",
         },
         "Body Area": {},
-        "Type Lock Up": {},
+        "Type Lock Up": { gap: "24px" },
         HeroLayout3: {
           width: "300px",
           height: "173.4px",
@@ -166,7 +166,7 @@ export default function MainPageTitleResponsivePanel(props) {
         {...getOverrideProps(overrides, "HeroLayout3")}
       >
         <Flex
-          gap="24px"
+          gap="30px"
           direction="column"
           width="unset"
           height="unset"
@@ -183,7 +183,7 @@ export default function MainPageTitleResponsivePanel(props) {
         >
           <Text
             fontFamily="Inter"
-            fontSize="20px"
+            fontSize="24px"
             fontWeight="700"
             color="rgba(255,255,255,1)"
             fontStyle="italic"
@@ -220,7 +220,7 @@ export default function MainPageTitleResponsivePanel(props) {
           >
             <Text
               fontFamily="Inter"
-              fontSize="44px"
+              fontSize="48px"
               fontWeight="600"
               color="rgba(255,255,255,1)"
               lineHeight="30px"

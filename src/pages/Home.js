@@ -63,7 +63,8 @@ import 'react-confirm-alert/src/react-confirm-alert.css';
                   <S3Image imgKey = {item.pictureUrl} imgPrefix = {item.id} />,
                 onEditIconClick: () => editIconClicked(item.id),
                 onDeleteIconClick: () => deleteIconClicked(item.id, item.name),
-                isAdmin: isAdmin
+                isAdmin: isAdmin,
+                gender: item.gender?.toLowerCase()
               })}
 
               templateColumns = {{large: "1fr 1fr", medium: "1fr"}}

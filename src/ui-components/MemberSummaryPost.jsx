@@ -23,6 +23,7 @@ export default function MemberSummaryPost(props) {
     onPictureIconClick,
     onDeleteIconClick,
     isAdmin = false,
+    gender = " ",
     overrides: overridesProp,
     ...restProp
   } = props;
@@ -39,6 +40,8 @@ export default function MemberSummaryPost(props) {
         Frame36792698: {},
         Sponsor: {},
         Frame36692723: {},
+        Age: {},
+        Frame38142701: {},
         Headline: {},
         Summary: {},
         Article: {},
@@ -63,6 +66,8 @@ export default function MemberSummaryPost(props) {
         Frame36792698: {},
         Sponsor: {},
         Frame36692723: {},
+        Age: {},
+        Frame38142701: {},
         Headline: {},
         Summary: {},
         Article: {},
@@ -92,6 +97,8 @@ export default function MemberSummaryPost(props) {
         Frame36792698: {},
         Sponsor: {},
         Frame36692723: {},
+        Age: {},
+        Frame38142701: {},
         Headline: {},
         Summary: {},
         Article: {},
@@ -121,6 +128,8 @@ export default function MemberSummaryPost(props) {
         Frame36792698: {},
         Sponsor: {},
         Frame36692723: {},
+        Age: {},
+        Frame38142701: {},
         Headline: {},
         Summary: {},
         Article: {},
@@ -197,7 +206,7 @@ export default function MemberSummaryPost(props) {
           {...getOverrideProps(overrides, "ImageSlot")}
         ></Flex>
         <Flex
-          gap="16px"
+          gap="8px"
           direction="column"
           width="unset"
           height="unset"
@@ -212,7 +221,7 @@ export default function MemberSummaryPost(props) {
           {...getOverrideProps(overrides, "Text")}
         >
           <Flex
-            gap="16px"
+            gap="8px"
             direction="column"
             width="unset"
             height="unset"
@@ -241,7 +250,7 @@ export default function MemberSummaryPost(props) {
             >
               <Text
                 fontFamily="Inter"
-                fontSize="20px"
+                fontSize="22px"
                 fontWeight="700"
                 color="rgba(13,26,38,1)"
                 lineHeight="25px"
@@ -354,7 +363,7 @@ export default function MemberSummaryPost(props) {
               <Text
                 fontFamily="Inter"
                 fontSize="16px"
-                fontWeight="400"
+                fontWeight="600"
                 color="rgba(0,0,0,1)"
                 lineHeight="25px"
                 textAlign="left"
@@ -373,6 +382,44 @@ export default function MemberSummaryPost(props) {
                 whiteSpace="pre-wrap"
                 children={`${"Angel Family: "}${member?.sponsor}`}
                 {...getOverrideProps(overrides, "Sponsor")}
+              ></Text>
+            </Flex>
+            <Flex
+              gap="16px"
+              direction="row"
+              width="unset"
+              height="unset"
+              justifyContent="flex-start"
+              alignItems="flex-start"
+              shrink="0"
+              alignSelf="stretch"
+              position="relative"
+              padding="0px 0px 0px 0px"
+              display="flex"
+              {...getOverrideProps(overrides, "Frame38142701")}
+            >
+              <Text
+                fontFamily="Inter"
+                fontSize="16px"
+                fontWeight="300"
+                color="rgba(92,102,112,1)"
+                lineHeight="25px"
+                textAlign="left"
+                display="block"
+                direction="column"
+                justifyContent="unset"
+                width="unset"
+                height="unset"
+                gap="unset"
+                alignItems="unset"
+                grow="1"
+                shrink="1"
+                basis="0"
+                position="relative"
+                padding="0px 0px 0px 0px"
+                whiteSpace="pre-wrap"
+                children={`${member?.age}${" year(s) old "}${gender}`}
+                {...getOverrideProps(overrides, "Age")}
               ></Text>
             </Flex>
           </Flex>

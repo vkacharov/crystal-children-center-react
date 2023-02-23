@@ -20,7 +20,7 @@
           "defaultAuthentication": {
             "authenticationType": "AMAZON_COGNITO_USER_POOLS",
             "userPoolConfig": {
-              "userPoolId": "eu-west-1_HRKQm4aqm"
+              "userPoolId": "authCrystalChildrenCenter"
             }
           }
         }

@@ -9,6 +9,7 @@ import {
   Button,
   Flex,
   Grid,
+  SelectField,
   TextAreaField,
   TextField,
 } from "@aws-amplify/ui-react";
@@ -31,6 +32,7 @@ export default function MemberCreateFormWithUpload(props) {
     name: "",
     age: "",
     date: "",
+    gender: undefined,
     summary: "",
     bio: "",
     sponsor: "",
@@ -41,6 +43,7 @@ export default function MemberCreateFormWithUpload(props) {
   const [name, setName] = React.useState(initialValues.name);
   const [age, setAge] = React.useState(initialValues.age);
   const [date, setDate] = React.useState(initialValues.date);
+  const [gender, setGender] = React.useState(initialValues.gender);
   const [summary, setSummary] = React.useState(initialValues.summary);
   const [bio, setBio] = React.useState(initialValues.bio);
   const [sponsor, setSponsor] = React.useState(initialValues.sponsor);
@@ -52,6 +55,7 @@ export default function MemberCreateFormWithUpload(props) {
     setName(initialValues.name);
     setAge(initialValues.age);
     setDate(initialValues.date);
+    setGender(initialValues.gender);
     setSummary(initialValues.summary);
     setBio(initialValues.bio);
     setSponsor(initialValues.sponsor);
@@ -61,9 +65,10 @@ export default function MemberCreateFormWithUpload(props) {
     setErrors({});
   };
   const validations = {
-    name: [],
+    name: [{ type: "Required" }],
     age: [],
     date: [],
+    gender: [],
     summary: [],
     bio: [],
     sponsor: [],
@@ -97,6 +102,7 @@ export default function MemberCreateFormWithUpload(props) {
           name,
           age,
           date,
+          gender,
           summary,
           bio,
           sponsor,
@@ -140,7 +146,6 @@ export default function MemberCreateFormWithUpload(props) {
           if (clearOnSuccess) {
             resetStateValues();
           }
-          
         } catch (err) {
           if (onError) {
             onError(modelFields, err.message);
@@ -152,7 +157,7 @@ export default function MemberCreateFormWithUpload(props) {
     >
       <TextField
         label="Name"
-        isRequired={false}
+        isRequired={true}
         isReadOnly={false}
         value={name}
         onChange={(e) => {
@@ -162,6 +167,7 @@ export default function MemberCreateFormWithUpload(props) {
               name: value,
               age,
               date,
+              gender,
               summary,
               bio,
               sponsor,
@@ -196,6 +202,7 @@ export default function MemberCreateFormWithUpload(props) {
               name,
               age: value,
               date,
+              gender,
               summary,
               bio,
               sponsor,
@@ -227,6 +234,7 @@ export default function MemberCreateFormWithUpload(props) {
               name,
               age,
               date: value,
+              gender,
               summary,
               bio,
               sponsor,
@@ -245,6 +253,48 @@ export default function MemberCreateFormWithUpload(props) {
         hasError={errors.date?.hasError}
         {...getOverrideProps(overrides, "date")}
       ></TextField>
+            <SelectField
+        label="Gender"
+        placeholder="Please select an option"
+        isDisabled={false}
+        value={gender}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              name,
+              age,
+              date,
+              gender: value,
+              pictureUrl,
+              summary,
+              bio,
+              sponsor,
+            };
+            const result = onChange(modelFields);
+            value = result?.gender ?? value;
+          }
+          if (errors.gender?.hasError) {
+            runValidationTasks("gender", value);
+          }
+          setGender(value);
+        }}
+        onBlur={() => runValidationTasks("gender", gender)}
+        errorMessage={errors.gender?.errorMessage}
+        hasError={errors.gender?.hasError}
+        {...getOverrideProps(overrides, "gender")}
+      >
+        <option
+          children="Boy"
+          value="BOY"
+          {...getOverrideProps(overrides, "genderoption0")}
+        ></option>
+        <option
+          children="Girl"
+          value="GIRL"
+          {...getOverrideProps(overrides, "genderoption1")}
+        ></option>
+      </SelectField>
       <TextAreaField
         value={summary}
         label="Summary"
@@ -257,6 +307,7 @@ export default function MemberCreateFormWithUpload(props) {
               name,
               age,
               date,
+              gender,
               summary: value,
               bio,
               sponsor,
@@ -287,6 +338,7 @@ export default function MemberCreateFormWithUpload(props) {
               name,
               age,
               date,
+              gender,
               summary,
               bio: value,
               sponsor,
@@ -317,6 +369,7 @@ export default function MemberCreateFormWithUpload(props) {
               name,
               age,
               date,
+              gender,
               summary,
               bio,
               sponsor: value,

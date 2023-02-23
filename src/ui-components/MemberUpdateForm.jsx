@@ -6,7 +6,13 @@
 
 /* eslint-disable */
 import * as React from "react";
-import { Button, Flex, Grid, TextField } from "@aws-amplify/ui-react";
+import {
+  Button,
+  Flex,
+  Grid,
+  SelectField,
+  TextField,
+} from "@aws-amplify/ui-react";
 import { getOverrideProps } from "@aws-amplify/ui-react/internal";
 import { Member } from "../models";
 import { fetchByPath, validateField } from "./utils";
@@ -27,6 +33,7 @@ export default function MemberUpdateForm(props) {
     name: "",
     age: "",
     date: "",
+    gender: undefined,
     bio: "",
     summary: "",
     pictureUrl: "",
@@ -35,6 +42,7 @@ export default function MemberUpdateForm(props) {
   const [name, setName] = React.useState(initialValues.name);
   const [age, setAge] = React.useState(initialValues.age);
   const [date, setDate] = React.useState(initialValues.date);
+  const [gender, setGender] = React.useState(initialValues.gender);
   const [bio, setBio] = React.useState(initialValues.bio);
   const [summary, setSummary] = React.useState(initialValues.summary);
   const [pictureUrl, setPictureUrl] = React.useState(initialValues.pictureUrl);
@@ -47,6 +55,7 @@ export default function MemberUpdateForm(props) {
     setName(cleanValues.name);
     setAge(cleanValues.age);
     setDate(cleanValues.date);
+    setGender(cleanValues.gender);
     setBio(cleanValues.bio);
     setSummary(cleanValues.summary);
     setPictureUrl(cleanValues.pictureUrl);
@@ -63,9 +72,10 @@ export default function MemberUpdateForm(props) {
   }, [idProp, member]);
   React.useEffect(resetStateValues, [memberRecord]);
   const validations = {
-    name: [],
+    name: [{ type: "Required" }],
     age: [],
     date: [],
+    gender: [],
     bio: [],
     summary: [],
     pictureUrl: [],
@@ -99,6 +109,7 @@ export default function MemberUpdateForm(props) {
           name,
           age,
           date,
+          gender,
           bio,
           summary,
           pictureUrl,
@@ -151,7 +162,7 @@ export default function MemberUpdateForm(props) {
     >
       <TextField
         label="Name"
-        isRequired={false}
+        isRequired={true}
         isReadOnly={false}
         value={name}
         onChange={(e) => {
@@ -161,6 +172,7 @@ export default function MemberUpdateForm(props) {
               name: value,
               age,
               date,
+              gender,
               bio,
               summary,
               pictureUrl,
@@ -195,6 +207,7 @@ export default function MemberUpdateForm(props) {
               name,
               age: value,
               date,
+              gender,
               bio,
               summary,
               pictureUrl,
@@ -226,6 +239,7 @@ export default function MemberUpdateForm(props) {
               name,
               age,
               date: value,
+              gender,
               bio,
               summary,
               pictureUrl,
@@ -244,6 +258,48 @@ export default function MemberUpdateForm(props) {
         hasError={errors.date?.hasError}
         {...getOverrideProps(overrides, "date")}
       ></TextField>
+      <SelectField
+        label="Gender"
+        placeholder="Please select an option"
+        isDisabled={false}
+        value={gender}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              name,
+              age,
+              date,
+              gender: value,
+              bio,
+              summary,
+              pictureUrl,
+              sponsor,
+            };
+            const result = onChange(modelFields);
+            value = result?.gender ?? value;
+          }
+          if (errors.gender?.hasError) {
+            runValidationTasks("gender", value);
+          }
+          setGender(value);
+        }}
+        onBlur={() => runValidationTasks("gender", gender)}
+        errorMessage={errors.gender?.errorMessage}
+        hasError={errors.gender?.hasError}
+        {...getOverrideProps(overrides, "gender")}
+      >
+        <option
+          children="Boy"
+          value="BOY"
+          {...getOverrideProps(overrides, "genderoption0")}
+        ></option>
+        <option
+          children="Girl"
+          value="GIRL"
+          {...getOverrideProps(overrides, "genderoption1")}
+        ></option>
+      </SelectField>
       <TextField
         label="Bio"
         isRequired={false}
@@ -256,6 +312,7 @@ export default function MemberUpdateForm(props) {
               name,
               age,
               date,
+              gender,
               bio: value,
               summary,
               pictureUrl,
@@ -286,6 +343,7 @@ export default function MemberUpdateForm(props) {
               name,
               age,
               date,
+              gender,
               bio,
               summary: value,
               pictureUrl,
@@ -316,6 +374,7 @@ export default function MemberUpdateForm(props) {
               name,
               age,
               date,
+              gender,
               bio,
               summary,
               pictureUrl: value,
@@ -346,6 +405,7 @@ export default function MemberUpdateForm(props) {
               name,
               age,
               date,
+              gender,
               bio,
               summary,
               pictureUrl,

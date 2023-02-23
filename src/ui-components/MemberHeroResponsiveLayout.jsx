@@ -13,7 +13,13 @@ import {
 } from "@aws-amplify/ui-react/internal";
 import { Flex, Text, useBreakpointValue } from "@aws-amplify/ui-react";
 export default function MemberHeroResponsiveLayout(props) {
-  const { member, imageSlot, overrides: overridesProp, ...restProp } = props;
+  const {
+    member,
+    imageSlot,
+    gender = " ",
+    overrides: overridesProp,
+    ...restProp
+  } = props;
   const variants = [
     {
       overrides: {
@@ -130,7 +136,7 @@ export default function MemberHeroResponsiveLayout(props) {
         {...getOverrideProps(overrides, "Left")}
       >
         <Flex
-          gap="24px"
+          gap="16px"
           direction="column"
           width="unset"
           height="unset"
@@ -168,7 +174,7 @@ export default function MemberHeroResponsiveLayout(props) {
           <Text
             fontFamily="Inter"
             fontSize="16px"
-            fontWeight="400"
+            fontWeight="600"
             color="rgba(0,0,0,1)"
             lineHeight="25px"
             textAlign="center"
@@ -203,7 +209,7 @@ export default function MemberHeroResponsiveLayout(props) {
             <Text
               fontFamily="Inter"
               fontSize="16px"
-              fontWeight="600"
+              fontWeight="500"
               color="rgba(13,26,38,1)"
               lineHeight="30px"
               textAlign="center"
@@ -279,7 +285,7 @@ export default function MemberHeroResponsiveLayout(props) {
               position="relative"
               padding="0px 0px 0px 0px"
               whiteSpace="pre-wrap"
-              children={`${member?.age}${" years old"}`}
+              children={`${member?.age}${" year(s) old "}${gender}`}
               {...getOverrideProps(overrides, "Age")}
             ></Text>
             <Text
