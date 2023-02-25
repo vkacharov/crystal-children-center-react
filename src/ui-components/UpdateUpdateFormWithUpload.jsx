@@ -5,7 +5,7 @@
  */
 /* eslint-disable */
 import * as React from "react";
-import { Button, Flex, Grid, TextField, TextAreaField } from "@aws-amplify/ui-react";
+import { Button, Flex, Grid, TextField, TextAreaField, Loader, Text } from "@aws-amplify/ui-react";
 import { getOverrideProps } from "@aws-amplify/ui-react/internal";
 import { Update } from "../models";
 import { fetchByPath, validateField } from "./utils";
@@ -28,7 +28,8 @@ export default function UpdateUpdateFormWithUpload(props) {
     pictureUrl: "",
     picturePath: "", 
     pictureFile: {},
-    memberID: rest['memberid']
+    memberID: rest['memberid'],
+    uploadPercentage: 0
   };
   const [date, setDate] = React.useState(initialValues.date);
   const [summary, setSummary] = React.useState(initialValues.summary);
@@ -37,6 +38,8 @@ export default function UpdateUpdateFormWithUpload(props) {
   const [pictureFile, setPictureFile] = React.useState(initialValues.pictureFile);
   const [memberID, setMemberID] = React.useState(initialValues.memberID);
   const [errors, setErrors] = React.useState({});
+  const [uploadPercentage, setUploadPercentage] = React.useState(initialValues.uploadPercentage);
+
   const resetStateValues = () => {
     const cleanValues = updateRecord
       ? { ...initialValues, ...updateRecord }
@@ -48,6 +51,7 @@ export default function UpdateUpdateFormWithUpload(props) {
     setPictureFile(initialValues.pictureFile);
     setMemberID(initialValues.memberID);
     setErrors({});
+    setUploadPercentage(initialValues.uploadPercentage);
   };
   const [updateRecord, setUpdateRecord] = React.useState(update);
   React.useEffect(() => {
@@ -79,6 +83,29 @@ export default function UpdateUpdateFormWithUpload(props) {
     setErrors((errors) => ({ ...errors, [fieldName]: validationResponse }));
     return validationResponse;
   };
+
+  const uploadFile = (pictureKey, pictureFile) => {
+    return new Promise((resolve, reject) => {
+      Storage.put(pictureKey, pictureFile, {
+        resumable: true,
+        progressCallback(progress) {
+          const percentage = Math.round(100 *  progress.loaded / progress.total);
+          setUploadPercentage(percentage);
+        },
+
+        completeCallback: (event) => {
+          console.log(`Successfully uploaded ${event.key}`);
+          resolve(event);
+        },
+
+        errorCallback: (err) => {
+          console.error('Unexpected error while uploading', err);
+          reject(err);
+        }
+      });
+    });
+  }
+
   return (
     <Grid
       as="form"
@@ -120,16 +147,17 @@ export default function UpdateUpdateFormWithUpload(props) {
               modelFields[key] = undefined;
             }
           });
+
+          if (pictureFile.name) {
+            let pictureKey = updateRecord.memberID + '/' + updateRecord.id + '/' + pictureUrl;
+            let uploadedFile = await uploadFile(pictureKey, pictureFile);
+          }
+          
           await DataStore.save(
             Update.copyOf(updateRecord, (updated) => {
               Object.assign(updated, modelFields);
             })
           );
-
-          if (pictureFile) {
-            let pictureKey = updateRecord.memberID + '/' + updateRecord.id + '/' + pictureUrl;
-            let uploadedFile = await Storage.put(pictureKey, pictureFile);
-          }
 
           if (onSuccess) {
             onSuccess(modelFields);
@@ -197,7 +225,7 @@ export default function UpdateUpdateFormWithUpload(props) {
         {...getOverrideProps(overrides, "summary")}
       ></TextAreaField>
       <TextField
-        label="Picture"
+        label="Picture or video"
         type="file"
         isRequired={false}
         isReadOnly={false}
@@ -226,6 +254,14 @@ export default function UpdateUpdateFormWithUpload(props) {
         hasError={errors.pictureUrl?.hasError}
         {...getOverrideProps(overrides, "pictureUrl")}
       ></TextField>
+      <Text variation="secondary">Upload progress</Text>
+      <Loader
+        variation="linear" 
+        percentage={uploadPercentage} 
+        isDeterminate 
+        isPercentageTextHidden 
+      />
+
       <Flex
         justifyContent="space-between"
         {...getOverrideProps(overrides, "CTAFlex")}

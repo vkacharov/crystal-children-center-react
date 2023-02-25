@@ -68,7 +68,7 @@ export default function UpdateResponsiveCard(props) {
         },
         UpdateResponsiveCard: {
           direction: "column",
-          width: "330px",
+          width: "unset",
           justifyContent: "center",
         },
       },
@@ -131,7 +131,7 @@ export default function UpdateResponsiveCard(props) {
       <Flex
         gap="10px"
         direction="column"
-        width="330px"
+        width="400px"
         height="unset"
         justifyContent="flex-start"
         alignItems="flex-start"
@@ -271,6 +271,7 @@ export default function UpdateResponsiveCard(props) {
         </Flex>
         <Divider
           width="40px"
+          height="1px"
           shrink="0"
           size="small"
           orientation="horizontal"

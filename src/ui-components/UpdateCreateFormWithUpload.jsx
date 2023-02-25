@@ -11,11 +11,14 @@ import {
   Grid,
   TextAreaField,
   TextField,
+  Text,
 } from "@aws-amplify/ui-react";
 import { getOverrideProps } from "@aws-amplify/ui-react/internal";
 import { Update } from "../models";
 import { fetchByPath, validateField } from "./utils";
 import { DataStore, Storage } from "aws-amplify";
+import { Loader } from '@aws-amplify/ui-react';
+
 export default function UpdateCreateFormWithUpload(props) {
   const {
     clearOnSuccess = true,
@@ -33,7 +36,8 @@ export default function UpdateCreateFormWithUpload(props) {
     pictureUrl: "",
     picturePath: "", 
     pictureFile: {},
-    memberID: rest['memberid']
+    memberID: rest['memberid'],
+    uploadPercentage: 0
   };
   const [date, setDate] = React.useState(initialValues.date);
   const [summary, setSummary] = React.useState(initialValues.summary);
@@ -42,6 +46,7 @@ export default function UpdateCreateFormWithUpload(props) {
   const [pictureFile, setPictureFile] = React.useState(initialValues.pictureFile);
   const [memberID, setMemberID] = React.useState(initialValues.memberID);
   const [errors, setErrors] = React.useState({});
+  const [uploadPercentage, setUploadPercentage] = React.useState(initialValues.uploadPercentagee);
 
   const resetStateValues = () => {
     setDate(initialValues.date);
@@ -50,6 +55,7 @@ export default function UpdateCreateFormWithUpload(props) {
     setPicturePath(initialValues.picturePath);
     setPictureFile(initialValues.pictureFile);
     setMemberID(initialValues.memberID);
+    setUploadPercentage(initialValues.uploadPercentage);
     setErrors({});
   };
   const validations = {
@@ -73,6 +79,28 @@ export default function UpdateCreateFormWithUpload(props) {
     setErrors((errors) => ({ ...errors, [fieldName]: validationResponse }));
     return validationResponse;
   };
+
+  const uploadFile = (pictureKey, pictureFile) => {
+    return new Promise((resolve, reject) => {
+      Storage.put(pictureKey, pictureFile, {
+        resumable: true,
+        progressCallback(progress) {
+          const percentage = Math.round(100 *  progress.loaded / progress.total);
+          setUploadPercentage(percentage);
+        },
+
+        completeCallback: (event) => {
+          console.log(`Successfully uploaded ${event.key}`);
+          resolve(event);
+        },
+
+        errorCallback: (err) => {
+          console.error('Unexpected error while uploading', err);
+          reject(err);
+        }
+      });
+    });
+  }
   return (
     <Grid
       as="form"
@@ -115,9 +143,17 @@ export default function UpdateCreateFormWithUpload(props) {
               modelFields[key] = undefined;
             }
           });
+          modelFields['pictureUrl'] = undefined;
           let createdUpdate = await DataStore.save(new Update(modelFields));
           let pictureKey = memberID + '/' + createdUpdate.id + '/' + pictureUrl;
-          let uploadedFile = await Storage.put(pictureKey, pictureFile);
+          let uploadedFile = await uploadFile(pictureKey, pictureFile);     
+          const uploadedFileKey = uploadedFile.key;
+          console.log(`Updating record with picture key ${uploadedFileKey}`);
+          await DataStore.save(
+            Update.copyOf(createdUpdate, (updated) => {
+              updated['pictureUrl'] = pictureUrl;
+            })
+          );
 
           if (onSuccess) {
             onSuccess(modelFields);
@@ -135,7 +171,7 @@ export default function UpdateCreateFormWithUpload(props) {
       {...rest}
     >
       <TextField
-        label="Udate date"
+        label="Update date"
         isRequired={false}
         isReadOnly={false}
         type="date"
@@ -188,8 +224,9 @@ export default function UpdateCreateFormWithUpload(props) {
         {...getOverrideProps(overrides, "summary")}
       ></TextAreaField>
       <TextField
+        accept="image/*,video/mp4,video/x-m4v,video/*"
         type="file"
-        label="Picture"
+        label="Picture or video"
         isRequired={false}
         isReadOnly={false}
         value={picturePath}
@@ -219,6 +256,15 @@ export default function UpdateCreateFormWithUpload(props) {
         hasError={errors.pictureUrl?.hasError}
         {...getOverrideProps(overrides, "pictureUrl")}
       ></TextField>
+      
+      <Text variation="secondary">Upload progress</Text>
+      <Loader
+        variation="linear" 
+        percentage={uploadPercentage} 
+        isDeterminate 
+        isPercentageTextHidden 
+      />
+
       <Flex
         justifyContent="space-between"
         {...getOverrideProps(overrides, "CTAFlex")}

@@ -164,6 +164,7 @@ export default function MemberSummaryAmpligram(props) {
       >
         <Divider
           width="unset"
+          height="1px"
           shrink="0"
           alignSelf="stretch"
           size="small"

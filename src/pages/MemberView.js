@@ -102,7 +102,6 @@ import 'react-confirm-alert/src/react-confirm-alert.css';
             contentLabel="Update Modal"
           >
             <UpdateUpdateFormWithUpload
-              clearOnSuccess={true}
               id = {selectedUpdate}
               memberid={id}
               onSuccess = {() => {
