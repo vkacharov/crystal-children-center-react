@@ -68,7 +68,7 @@
   cursor: pointer !important;
 }
 
-.action-link > p {
+p.action-link,.action-link > p {
   -webkit-user-select: none !important;
   -ms-user-select: none !important;
   user-select: none !important;

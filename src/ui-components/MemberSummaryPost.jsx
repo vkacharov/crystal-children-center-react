@@ -157,6 +157,10 @@ export default function MemberSummaryPost(props) {
     }),
     overridesProp || {}
   );
+  const nameOnClick = useNavigateAction({
+    type: "url",
+    url: `${"/member/"}${member?.id}`,
+  });
   const readmoreOnClick = useNavigateAction({
     type: "url",
     url: `${"/member/"}${member?.id}`,
@@ -268,7 +272,11 @@ export default function MemberSummaryPost(props) {
                 position="relative"
                 padding="0px 0px 0px 0px"
                 whiteSpace="pre-wrap"
+                className="action-link"
                 children={member?.name}
+                onClick={() => {
+                  nameOnClick();
+                }}
                 {...getOverrideProps(overrides, "Name")}
               ></Text>
               <Flex
