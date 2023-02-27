@@ -316,6 +316,21 @@ export default function MyIcon(props) {
       },
       variantValues: { type: "edit" },
     },
+    {
+      overrides: {
+        MyIcon: {
+          paths: [
+            {
+              d: "M3 17C3 17.2761 3.22386 17.5 3.5 17.5L19.5 17.5C19.7761 17.5 20 17.2761 20 17L20 9L22.189 9C22.4675 9 22.5957 8.65348 22.3843 8.47222L19.5 6L19.5 1.2C19.5 1.08954 19.4105 1 19.3 1L16.2 1C16.0895 1 16 1.08954 16 1.2L16 3.5L12.4238 0.718485C11.8808 0.296159 11.1201 0.297302 10.5784 0.721257L0.68521 8.46375C0.460619 8.63952 0.584909 9 0.870103 9L3 9L3 17ZM14.5 17.5L8.5 17.5L8.5 11.5C8.5 10.9477 8.94772 10.5 9.5 10.5L13.5 10.5C14.0523 10.5 14.5 10.9477 14.5 11.5L14.5 17.5Z",
+              fill: "rgba(13,26,38,1)",
+              fillRule: "nonzero",
+              style: { transform: "translate(4.17%, 14.58%)" },
+            },
+          ],
+        },
+      },
+      variantValues: { type: "home" },
+    },
   ];
   const overrides = mergeVariantsAndOverrides(
     getOverridesFromVariants(variants, props),

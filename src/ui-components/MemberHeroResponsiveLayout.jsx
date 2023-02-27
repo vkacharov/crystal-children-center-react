@@ -285,7 +285,7 @@ export default function MemberHeroResponsiveLayout(props) {
               position="relative"
               padding="0px 0px 0px 0px"
               whiteSpace="pre-wrap"
-              children={`${member?.age}${" year(s) old "}${gender}`}
+              children={`${member?.age}${" year old "}${gender}`}
               {...getOverrideProps(overrides, "Age")}
             ></Text>
             <Text
