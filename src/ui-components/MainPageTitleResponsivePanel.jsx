@@ -83,7 +83,7 @@ export default function MainPageTitleResponsivePanel(props) {
       overrides: {
         image: { height: "98.52%", top: "0.66%", bottom: "0.81%" },
         Mission: { fontSize: "14px", display: "none", children: "CCC" },
-        Name: { fontSize: "16px" },
+        Name: { fontSize: "20px" },
         Lede: {
           fontSize: "16px",
           display: "none",

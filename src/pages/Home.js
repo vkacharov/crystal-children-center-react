@@ -58,14 +58,23 @@ import 'react-confirm-alert/src/react-confirm-alert.css';
               <h2>Meet Our Family</h2>
             </div>
             <MemberSummaryPostCollection 
-              overrideItems={({ item }) => ({
-                imageSlot: 
-                  <S3Image imgKey = {item.pictureUrl} imgPrefix = {item.id} />,
-                onEditIconClick: () => editIconClicked(item.id),
-                onDeleteIconClick: () => deleteIconClicked(item.id, item.name),
-                isAdmin: isAdmin,
-                gender: item.gender?.toLowerCase()
-              })}
+              overrideItems={({ item }) => {
+                let hasRecentUpdates = false;
+                const lastUpdateDate = new Date(item.Updates[0]?.date);
+                if (lastUpdateDate) {
+                  const startDate = new Date(new Date().setHours(0, 0, 0));
+                  startDate.setDate(startDate.getDate() - 3);
+                  hasRecentUpdates = lastUpdateDate > startDate;
+                }
+                return ({
+                  imageSlot: 
+                    <S3Image imgKey = {item.pictureUrl} imgPrefix = {item.id} />,
+                  onEditIconClick: () => editIconClicked(item.id),
+                  onDeleteIconClick: () => deleteIconClicked(item.id, item.name),
+                  isAdmin: isAdmin,
+                  gender: item.gender?.toLowerCase(),
+                  hasRecentUpdates: hasRecentUpdates
+              })}}
 
               templateColumns = {{large: "1fr 1fr", medium: "1fr"}}
              

@@ -50,11 +50,11 @@ export default function ResponsiveNavBar(props) {
         Logo: { width: "45px", height: "45px" },
         Divider37852694: { height: "24px" },
         Vector38222704: {},
-        Home: { display: "none" },
+        Home: { color: "rgba(0,0,0,1)", display: "none" },
         HomeFrame: {},
         Navigation: { gap: "14px", justifyContent: "center" },
         Vector38312708: {},
-        donate: { display: "none", children: "v" },
+        donate: { color: "rgba(0,0,0,1)", display: "none", children: "v" },
         DonateFrame: {
           gap: "10px",
           justifyContent: "flex-start",
@@ -62,7 +62,7 @@ export default function ResponsiveNavBar(props) {
         },
         Divider37782775: {},
         Vector38222709: {},
-        signout: { display: "none" },
+        signout: { color: "rgba(0,0,0,1)", display: "none" },
         SignoutFrame: { gap: "10px" },
         External: { gap: "14px", justifyContent: "center" },
         ResponsiveNavBar: { width: "350px", padding: "6px 18px 6px 18px" },
@@ -75,15 +75,15 @@ export default function ResponsiveNavBar(props) {
         Logo: {},
         Divider37852694: { height: "24px" },
         Vector38222704: {},
-        Home: {},
+        Home: { color: "rgba(0,0,0,1)" },
         HomeFrame: { gap: "8px" },
         Navigation: { gap: "32px", justifyContent: "center" },
         Vector38312708: {},
-        donate: {},
+        donate: { color: "rgba(0,0,0,1)" },
         DonateFrame: { gap: "8px" },
         Divider37782775: {},
         Vector38222709: {},
-        signout: {},
+        signout: { color: "rgba(0,0,0,1)" },
         SignoutFrame: { gap: "8px" },
         External: { gap: "32px" },
         ResponsiveNavBar: { width: "1260px" },
@@ -96,11 +96,16 @@ export default function ResponsiveNavBar(props) {
         Logo: { width: "45px", height: "45px" },
         Divider37852694: { height: "24px" },
         Vector38222704: {},
-        Home: { fontSize: "18px", display: "none", letterSpacing: "0.03px" },
+        Home: {
+          fontSize: "18px",
+          color: "rgba(0,0,0,1)",
+          display: "none",
+          letterSpacing: "0.03px",
+        },
         HomeFrame: { gap: "4px" },
         Navigation: { gap: "14px" },
         Vector38312708: {},
-        donate: { display: "none", children: "v" },
+        donate: { color: "rgba(0,0,0,1)", display: "none", children: "v" },
         DonateFrame: {
           gap: "10px",
           justifyContent: "flex-start",
@@ -110,6 +115,7 @@ export default function ResponsiveNavBar(props) {
         Vector38222709: {},
         signout: {
           fontSize: "18px",
+          color: "rgba(0,0,0,1)",
           lineHeight: "21.784090042114258px",
           display: "none",
         },
@@ -262,7 +268,7 @@ export default function ResponsiveNavBar(props) {
             fontFamily="Inter"
             fontSize="20px"
             fontWeight="400"
-            color="rgba(0,0,0,1)"
+            color="rgba(13,26,38,1)"
             lineHeight="24px"
             textAlign="left"
             display="block"
@@ -319,7 +325,7 @@ export default function ResponsiveNavBar(props) {
             paths={[
               {
                 d: "M10 18.35L8.55 17.03C3.4 12.36 0 9.28 0 5.5C0 2.42 2.42 0 5.5 0C7.24 0 8.91 0.81 10 2.09C11.09 0.81 12.76 0 14.5 0C17.58 0 20 2.42 20 5.5C20 9.28 16.6 12.36 11.45 17.04L10 18.35Z",
-                fill: "rgba(13,26,38,1)",
+                fill: "rgba(169,0,0,1)",
                 fillRule: "nonzero",
               },
             ]}
@@ -335,7 +341,7 @@ export default function ResponsiveNavBar(props) {
             fontFamily="Inter"
             fontSize="20px"
             fontWeight="400"
-            color="rgba(0,0,0,1)"
+            color="rgba(13,26,38,1)"
             lineHeight="24.204544067382812px"
             textAlign="left"
             display="block"
@@ -400,7 +406,7 @@ export default function ResponsiveNavBar(props) {
             fontFamily="Inter"
             fontSize="20px"
             fontWeight="400"
-            color="rgba(0,0,0,1)"
+            color="rgba(13,26,38,1)"
             lineHeight="24.204544067382812px"
             textAlign="left"
             display="block"

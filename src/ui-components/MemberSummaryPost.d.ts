@@ -7,7 +7,7 @@
 import * as React from "react";
 import { Member } from "../models";
 import { EscapeHatchProps } from "@aws-amplify/ui-react/internal";
-import { FlexProps, TextProps, ViewProps } from "@aws-amplify/ui-react";
+import { FlexProps, IconProps, TextProps, ViewProps } from "@aws-amplify/ui-react";
 import { MyIconProps } from "./MyIcon";
 import { SyntheticEvent } from "react";
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
@@ -18,6 +18,8 @@ export declare type MemberSummaryPostOverridesProps = {
     Text?: PrimitiveOverrideProps<FlexProps>;
     Headline?: PrimitiveOverrideProps<FlexProps>;
     Frame36792698?: PrimitiveOverrideProps<FlexProps>;
+    "bell-solid 1"?: PrimitiveOverrideProps<ViewProps>;
+    Vector?: PrimitiveOverrideProps<IconProps>;
     Name?: PrimitiveOverrideProps<TextProps>;
     "Frame 419"?: PrimitiveOverrideProps<FlexProps>;
     EditIconFrame?: PrimitiveOverrideProps<ViewProps>;
@@ -43,6 +45,7 @@ export declare type MemberSummaryPostProps = React.PropsWithChildren<Partial<Fle
     onDeleteIconClick?: (event: SyntheticEvent) => void;
     isAdmin?: Boolean;
     gender?: String;
+    hasRecentUpdates?: Boolean;
 } & {
     breakpoint?: "base" | "large" | "medium" | "small";
 } & {
